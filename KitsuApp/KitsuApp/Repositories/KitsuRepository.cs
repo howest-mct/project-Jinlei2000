@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KitsuApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -17,9 +18,9 @@ namespace KitsuApp.Repositories
             return client;
         }
 
-        //public static async Task<List<Anime>> GetAnimesAsync()
-        //{
-        //    return null;
-        //}
+        public static async Task<List<Anime>> GetAnimesAsync()
+        {
+            return null;
+        }
     }
 }
