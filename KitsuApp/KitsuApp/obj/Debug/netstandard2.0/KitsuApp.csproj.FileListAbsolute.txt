@@ -1,0 +1,16 @@
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\KitsuApp.csproj.AssemblyReference.cache
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\KitsuApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\NoConnectionPage.xaml.g.cs
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\KitsuApp.AssemblyInfoInputs.cache
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\KitsuApp.AssemblyInfo.cs
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\KitsuApp.csproj.CoreCompileInputs.cache
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\bin\Debug\netstandard2.0\KitsuApp.deps.json
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\bin\Debug\netstandard2.0\KitsuApp.dll
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\bin\Debug\netstandard2.0\KitsuApp.pdb
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\KitsuApp.dll
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\refint\KitsuApp.dll
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\KitsuApp.pdb
+C:\Users\jinle\Documents\Labo\lab06-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\ref\KitsuApp.dll
