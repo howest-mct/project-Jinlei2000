@@ -80,7 +80,7 @@ namespace KitsuApp.Models
     }
     public class Image
     {
-        [JsonProperty(PropertyName = "tiny", NullValueHandling = NullValueHandling.Ignore)]
-        public string Tiny { get; set; }
+        [JsonProperty(PropertyName = "small", NullValueHandling = NullValueHandling.Ignore)]
+        public string Small { get; set; }
     }
 }

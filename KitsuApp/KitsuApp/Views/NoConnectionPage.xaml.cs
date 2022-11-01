@@ -17,7 +17,7 @@ namespace KitsuApp.Views
         {
             InitializeComponent();
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
-            ImageConnnection.Source = ImageSource.FromResource("Anime.Assets.no-internet.png");
+            ImageConnnection.Source = ImageSource.FromResource("KitsuApp.Assets.no-internet.png");
 
         }
         void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
