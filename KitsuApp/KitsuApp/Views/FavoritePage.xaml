@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KitsuApp.Views.FavoritePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+             x:Class="KitsuApp.Views.FavoritePage"
+            xmlns:view="clr-namespace:KitsuApp.Views"
+            xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
+             Title="Gozzby">
+
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Gozzby" Icon="{local:EmbeddedImage ResourceId=KitsuApp.Assets.logo.png }" Order="Primary" Priority="0"/>
+    </TabbedPage.ToolbarItems>
+
+    <!--TAB 1-->
+    <view:AnimeOverviewFav Title="Anime" />
+    <!--TAB 2-->
+    <view:MangaOverviewFav  Title="Manga" />
+</TabbedPage>

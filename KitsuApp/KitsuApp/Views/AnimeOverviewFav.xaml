@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="KitsuApp.Views.AnimeOverviewFav">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonAddDelStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="WidthRequest" Value="32"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="FontFamily" Value="MaterialIconsTwoToneRegular"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="Margin" Value="-42,4,0,0"/>
+            </Style>
+            <Style x:Key="buttonAddEditStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="WidthRequest" Value="32"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="FontFamily" Value="MaterialIconsTwoToneRegular"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="Margin" Value="-38,0,0,4"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+
+            <StackLayout>
+                <Label Text="Favorite Anime" FontSize="16" FontAttributes="Bold" Margin="10,5" TextColor="Black"/>
+
+                <!--<ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>-->
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  />
+                        <ColumnDefinition  />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Padding="4" Margin="20,0" CornerRadius="4" BackgroundColor="Transparent" WidthRequest="140"  >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="16"/>
+                                <RowDefinition />
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Anime 1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
+                            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
+                                <Image Source="https://media.kitsu.io/manga/2/poster_image/medium-4008eba46e0f10fa5d58df7497b005a6.jpeg"/>
+                                <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}"/>
+                                <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}"/>
+                            </StackLayout>
+                            <Label Text="guardian-dog" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
+                        </Grid>
+                    </Frame>
+
+                </Grid>
+
+
+
+
+                <!-- </ViewCell>
+                </DataTemplate>
+                     </ListView.ItemTemplate>
+                    </ListView>-->
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

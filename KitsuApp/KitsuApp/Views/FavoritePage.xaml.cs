@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace KitsuApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FavoritePage : ContentPage
+    public partial class FavoritePage : TabbedPage
     {
         public FavoritePage()
         {

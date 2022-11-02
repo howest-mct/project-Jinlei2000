@@ -3,6 +3,7 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "KitsuApp.Android.dll" comes first in this list. */
 		"KitsuApp.Android.dll",
+		"DLToolkit.Forms.Controls.FlowListView.dll",
 		"FormsViewGroup.dll",
 		"KitsuApp.dll",
 		"Newtonsoft.Json.dll",

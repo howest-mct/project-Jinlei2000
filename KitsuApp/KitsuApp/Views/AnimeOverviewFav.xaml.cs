@@ -1,0 +1,23 @@
+﻿using DLToolkit.Forms.Controls;
+using KitsuApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace KitsuApp.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AnimeOverviewFav : ContentPage
+    {
+        public AnimeOverviewFav()
+        {
+            InitializeComponent();
+            
+        }
+    }
+}

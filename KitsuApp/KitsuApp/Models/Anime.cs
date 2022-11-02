@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using Xamarin.Forms;
 
 namespace KitsuApp.Models
 {
@@ -16,6 +17,8 @@ namespace KitsuApp.Models
         public AnimeInformation AnimeInfo { get; set; }
 
         public override string CollectionType => "anime";
+
+        public ImageSource GetImage { get { return ImageSource.FromResource(AnimeInfo.PosterImage.Small); } }
 
         public string TotalTime
         {
@@ -69,7 +72,7 @@ namespace KitsuApp.Models
         [JsonProperty(PropertyName = "status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
         [JsonProperty(PropertyName = "posterImage", NullValueHandling = NullValueHandling.Ignore)]
-        public Image PosterImage { get; set; }
+        public PosterImage PosterImage { get; set; }
 
         [JsonProperty(PropertyName = "episodeCount", NullValueHandling = NullValueHandling.Ignore)]
         public int EpisodeCount { get; set; }
@@ -78,9 +81,14 @@ namespace KitsuApp.Models
         [JsonProperty(PropertyName = "totalLength", NullValueHandling = NullValueHandling.Ignore)]
         public int TotalLength { get; set; }
     }
-    public class Image
+    public class PosterImage
     {
         [JsonProperty(PropertyName = "small", NullValueHandling = NullValueHandling.Ignore)]
+
         public string Small { get; set; }
+
+        [JsonProperty(PropertyName = "medium", NullValueHandling = NullValueHandling.Ignore)]
+        public string Medium { get; set; }
+
     }
 }

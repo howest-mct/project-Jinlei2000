@@ -5,9 +5,7 @@
             x:Class="KitsuApp.Views.HomePage" 
             xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
             Title="Gozzby"
-            BarBackground="#FCFDFE"
-            BarTextColor="#060818"
-            BackgroundColor="#FCFDFE"
+            
             >
     
     <TabbedPage.ToolbarItems>
