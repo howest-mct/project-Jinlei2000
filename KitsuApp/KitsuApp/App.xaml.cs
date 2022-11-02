@@ -1,6 +1,10 @@
-﻿using System;
+﻿using KitsuApp.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+[assembly: ExportFont("MaterialIconsRegular.ttf", Alias = "MaterialIconsRegular")]
+[assembly: ExportFont("MaterialIconsTwoToneRegular.otf", Alias = "MaterialIconsTwoToneRegular")]
 
 namespace KitsuApp
 {
@@ -10,11 +14,12 @@ namespace KitsuApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage())
-            {
-                BarBackgroundColor = Color.FromHex("#FCFDFE"),
-                BarTextColor = Color.FromHex("#4056F4"),
-            };
+            //MainPage = new NavigationPage(new MainPage())
+            //{
+            //    BarBackgroundColor = Color.FromHex("#FCFDFE"),
+            //    BarTextColor = Color.FromHex("#4056F4"),
+            //};
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

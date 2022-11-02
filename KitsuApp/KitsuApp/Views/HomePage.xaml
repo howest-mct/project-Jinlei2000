@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:view="clr-namespace:KitsuApp.Views"
+            x:Class="KitsuApp.Views.HomePage" 
+            xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
+            Title="Gozzby"
+            BarBackground="#FCFDFE"
+            BarTextColor="#060818"
+            BackgroundColor="#FCFDFE">
+    
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Gozzby" Icon="{local:EmbeddedImage ResourceId=KitsuApp.Assets.logo.png }" Order="Primary" Priority="0"/>
+    </TabbedPage.ToolbarItems>
+    
+    <!--TAB 1-->
+    <view:AnimeOverview Title="Anime" />
+    <!--TAB 2-->
+    <view:MangaOverview  Title="Manga" />
+</TabbedPage>

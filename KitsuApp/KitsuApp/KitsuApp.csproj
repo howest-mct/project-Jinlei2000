@@ -11,13 +11,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\flame-svgrepo-com.png" />
-    <None Remove="Assets\no-internet.png" />
+    <None Remove="Assets\home.png" />
+    <None Remove="Assets\logo.png" />
+    <None Remove="Assets\noInternet.png" />
+    <None Remove="Assets\star.png" />
+    <None Remove="Fonts\MaterialIconsRegular.ttf" />
+    <None Remove="Fonts\MaterialIconsTwoToneRegular.otf" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\flame-svgrepo-com.png" />
-    <EmbeddedResource Include="Assets\no-internet.png" />
+    <EmbeddedResource Include="Assets\logo.png" />
+    <EmbeddedResource Include="Assets\home.png" />
+    <EmbeddedResource Include="Assets\noInternet.png" />
+    <EmbeddedResource Include="Assets\star.png" />
+    <EmbeddedResource Include="Fonts\MaterialIconsRegular.ttf" />
+    <EmbeddedResource Include="Fonts\MaterialIconsTwoToneRegular.otf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +36,15 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Views\AnimeOverview.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AppShell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\FavoritePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MangaOverview.xaml">

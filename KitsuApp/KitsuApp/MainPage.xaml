@@ -1,17 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KitsuApp.MainPage"
-            xmlns:view="clr-namespace:KitsuApp.Views"
-            Title="Gozzby"
-            BarBackground="#FCFDFE"
-            BarTextColor="#060818"
-            BackgroundColor="#FCFDFE"
             >
 
-    <!--TAB 1-->
-    <view:AnimeOverview Title="Anime" />
-    <!--TAB 2-->
-    <view:MangaOverview  Title="Manga" />
-
-</TabbedPage>
+</ContentPage>
