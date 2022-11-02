@@ -33,43 +33,159 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Picker Title="Looking for a specific category?" Margin="10,0" FontSize="10"/>
-            <Label Text="Anime" FontSize="16" FontAttributes="Bold" Margin="10,5" TextColor="Black"/>
+        <ScrollView Orientation="Vertical">
+            <StackLayout>
+                <Picker Title="Looking for a specific category?" Margin="10,0" FontSize="10"/>
+                <Label Text="Anime" FontSize="16" FontAttributes="Bold" Margin="10,5" TextColor="Black"/>
 
-            <FlexLayout>
-                <Label Text="Trending now" FontSize="14" Margin="10,0"></Label>
-                <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
-            </FlexLayout>
+                <FlexLayout>
+                    <Label Text="Trending now" FontSize="14" Margin="10,0"></Label>
+                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                </FlexLayout>
 
-            <ScrollView Orientation="Horizontal">
-                <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
-                    <!--<ListView>
+                <ScrollView Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                        <!--<ListView>
                         <ListView.ItemTemplate>
                             <DataTemplate>-->
-                    <Frame Padding="4" Margin="5,0" CornerRadius="4" BackgroundColor="#EBEEFD" WidthRequest="105">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-                            <StackLayout>
-                                <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
-                                <Image Source="https://media.kitsu.io/manga/1/poster_image/small-8014f18506a324ddf8318c4a74bf4c12.jpeg"/>
-                            </StackLayout>
-                            <Label Text="guardian-dog" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
-                        </Grid>
-                    </Frame>
-                    
-                    
-                    <!-- </DataTemplate>
+                        <Frame Padding="4" Margin="5,0" CornerRadius="4" BackgroundColor="Transparent" WidthRequest="105">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
+                                    <Image Source="https://media.kitsu.io/manga/1/poster_image/small-8014f18506a324ddf8318c4a74bf4c12.jpeg"/>
+                                </StackLayout>
+                                <Label Text="guardian-dog" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
+                            </Grid>
+                        </Frame>
+                        <!-- </DataTemplate>
                      </ListView.ItemTemplate>
                     </ListView>-->
-                </StackLayout>
-            </ScrollView>
+                    </StackLayout>
+                </ScrollView>
 
+                <FlexLayout>
+                    <Label Text="Most Popular" FontSize="14" Margin="10,0"></Label>
+                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                </FlexLayout>
 
-        </StackLayout>
+                <ScrollView Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                        <!--<ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>-->
+                        <Frame Padding="4" Margin="5,0" CornerRadius="4" BackgroundColor="Transparent" WidthRequest="105">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
+                                    <Image Source="https://media.kitsu.io/manga/1/poster_image/small-8014f18506a324ddf8318c4a74bf4c12.jpeg"/>
+                                </StackLayout>
+                                <Label Text="guardian-dog" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
+                            </Grid>
+                        </Frame>
+                        <!-- </DataTemplate>
+                     </ListView.ItemTemplate>
+                    </ListView>-->
+                    </StackLayout>
+                </ScrollView>
+
+                <FlexLayout>
+                    <Label Text="Highest Rated" FontSize="14" Margin="10,0"></Label>
+                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                </FlexLayout>
+
+                <ScrollView Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                        <!--<ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>-->
+                        <Frame Padding="4" Margin="5,0" CornerRadius="4" BackgroundColor="Transparent" WidthRequest="105">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
+                                    <Image Source="https://media.kitsu.io/manga/1/poster_image/small-8014f18506a324ddf8318c4a74bf4c12.jpeg"/>
+                                </StackLayout>
+                                <Label Text="guardian-dog" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
+                            </Grid>
+                        </Frame>
+                        <!-- </DataTemplate>
+                     </ListView.ItemTemplate>
+                    </ListView>-->
+                    </StackLayout>
+                </ScrollView>
+
+                <FlexLayout>
+                    <Label Text="Recently Updated" FontSize="14" Margin="10,0"></Label>
+                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                </FlexLayout>
+
+                <ScrollView Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                        <!--<ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>-->
+                        <Frame Padding="4" Margin="5,0" CornerRadius="4" BackgroundColor="Transparent" WidthRequest="105">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
+                                    <Image Source="https://media.kitsu.io/manga/1/poster_image/small-8014f18506a324ddf8318c4a74bf4c12.jpeg"/>
+                                </StackLayout>
+                                <Label Text="guardian-dog" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
+                            </Grid>
+                        </Frame>
+                        <!-- </DataTemplate>
+                     </ListView.ItemTemplate>
+                    </ListView>-->
+                    </StackLayout>
+                </ScrollView>
+
+                <FlexLayout>
+                    <Label Text="Top Upcoming" FontSize="14" Margin="10,0"></Label>
+                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                </FlexLayout>
+
+                <ScrollView Orientation="Horizontal" Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                        <!--<ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>-->
+                        <Frame Padding="4" Margin="5,0" CornerRadius="4" BackgroundColor="Transparent" WidthRequest="105">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
+                                    <Image Source="https://media.kitsu.io/manga/1/poster_image/small-8014f18506a324ddf8318c4a74bf4c12.jpeg"/>
+                                </StackLayout>
+                                <Label Text="guardian-dog" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
+                            </Grid>
+                        </Frame>
+                        <!-- </DataTemplate>
+                     </ListView.ItemTemplate>
+                    </ListView>-->
+                    </StackLayout>
+                </ScrollView>
+
+            </StackLayout>
+        </ScrollView>
+        
 
 
 
