@@ -15,6 +15,10 @@
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\noInternet.png" />
     <None Remove="Assets\star.png" />
+    <None Remove="Fonts\InterBold.ttf" />
+    <None Remove="Fonts\InterMedium.ttf" />
+    <None Remove="Fonts\InterRegular.ttf" />
+    <None Remove="Fonts\InterSemiBold.ttf" />
     <None Remove="Fonts\MaterialIconsRegular.ttf" />
     <None Remove="Fonts\MaterialIconsTwoToneRegular.otf" />
   </ItemGroup>
@@ -24,6 +28,10 @@
     <EmbeddedResource Include="Assets\home.png" />
     <EmbeddedResource Include="Assets\noInternet.png" />
     <EmbeddedResource Include="Assets\star.png" />
+    <EmbeddedResource Include="Fonts\InterBold.ttf" />
+    <EmbeddedResource Include="Fonts\InterMedium.ttf" />
+    <EmbeddedResource Include="Fonts\InterRegular.ttf" />
+    <EmbeddedResource Include="Fonts\InterSemiBold.ttf" />
     <EmbeddedResource Include="Fonts\MaterialIconsRegular.ttf" />
     <EmbeddedResource Include="Fonts\MaterialIconsTwoToneRegular.otf" />
   </ItemGroup>

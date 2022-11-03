@@ -18,8 +18,6 @@ namespace KitsuApp.Models
 
         public override string CollectionType => "anime";
 
-        public ImageSource GetImage { get { return ImageSource.FromResource(AnimeInfo.PosterImage.Small); } }
-
         public string TotalTime
         {
             get
