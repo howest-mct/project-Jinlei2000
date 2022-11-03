@@ -59,6 +59,8 @@ namespace KitsuApp.Models
     {
         [JsonProperty(PropertyName = "slug", NullValueHandling = NullValueHandling.Ignore)]
         public string Slug { get; set; }
+        [JsonProperty(PropertyName = "canonicalTitle", NullValueHandling = NullValueHandling.Ignore)]
+        public string Name { get; set; }
         [JsonProperty(PropertyName = "synopsis", NullValueHandling = NullValueHandling.Ignore)]
         public string Synopsis { get; set; }
         [JsonProperty(PropertyName = "averageRating", NullValueHandling = NullValueHandling.Ignore)]

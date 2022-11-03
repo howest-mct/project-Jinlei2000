@@ -29,9 +29,9 @@ namespace KitsuApp.Views
             Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxx" + animes.Count);
             foreach (Anime anime in animes)
             {
-                Debug.WriteLine(anime.AnimeInfo.PosterImage.Small);
+                Debug.WriteLine(anime.AnimeInfo.Name);
             }
-            lvwtest.ItemsSource = animes;
+            lvwTrending.ItemsSource = animes;
         }
     }
 }

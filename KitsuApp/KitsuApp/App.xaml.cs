@@ -20,12 +20,6 @@ namespace KitsuApp
         public App()
         {
             InitializeComponent();
-
-            //MainPage = new NavigationPage(new MainPage())
-            //{
-            //    BarBackgroundColor = Color.FromHex("#FCFDFE"),
-            //    BarTextColor = Color.FromHex("#4056F4"),
-            //};
             MainPage = new AppShell();
         }
 
