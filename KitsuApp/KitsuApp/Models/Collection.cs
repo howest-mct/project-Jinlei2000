@@ -11,6 +11,9 @@ namespace KitsuApp.Models
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
+
+        [JsonProperty(PropertyName = "favName", NullValueHandling = NullValueHandling.Ignore)]
+        public string FavName { get; set; }
         //public string Slug { get; set; }
         //public string Synopsis { get; set; }
         //public string AverageRating { get; set; }
@@ -18,7 +21,7 @@ namespace KitsuApp.Models
         //public string Subtype { get; set; }
         //public string Status { get; set; }
         //public string PosterImage { get; set; }
-        
+
         //[JsonProperty(PropertyName = "attributes")]
         //public GeneralInformation GeneralInfo { get; set; }
 

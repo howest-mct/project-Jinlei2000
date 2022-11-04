@@ -4,6 +4,7 @@
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="KitsuApp.Views.AnimeOverviewFav">
 
+    <!--#region Styling Component-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="buttonAddDelStyle" TargetType="Button">
@@ -34,56 +35,61 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <!--#endregion-->
 
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical">
 
+        <!--#region Your Favorite Anime-->
+        <ScrollView Orientation="Vertical">
             <StackLayout>
                 <Label Text="Favorite Anime" FontSize="16" FontAttributes="Bold" Margin="10,5" TextColor="Black"/>
 
-                <!--<ListView>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>-->
+                <CollectionView SelectionMode="Single" x:Name="cvwYourFavorites" Margin="0,0,0,10">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
 
+                            <Grid>
+                                <!--#region Change Selection color-->
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <!-- <VisualState Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>-->
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <!--#endregion-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="10"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding FavName}" WidthRequest="150" HorizontalTextAlignment="Center" VerticalOptions="End" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterSemiBold" TextColor="#0D0D0D"/>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Image Source="{Binding AnimeInfo.PosterImage.Medium}"/>
+                                    <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}"/>
+                                    <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}"/>
+                                </StackLayout>
+                                <Label Text="{Binding AnimeInfo.Name}" WidthRequest="150" HorizontalTextAlignment="Center" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                            </Grid>
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition  />
-                        <ColumnDefinition  />
-                    </Grid.ColumnDefinitions>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-                    <Frame Padding="4" Margin="20,0" CornerRadius="4" BackgroundColor="Transparent" WidthRequest="140"  >
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="16"/>
-                                <RowDefinition />
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-                            <Label Text="Anime 1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
-                            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
-                                <Image Source="https://media.kitsu.io/manga/2/poster_image/medium-4008eba46e0f10fa5d58df7497b005a6.jpeg"/>
-                                <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}"/>
-                                <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}"/>
-                            </StackLayout>
-                            <Label Text="guardian-dog" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap"/>
-                        </Grid>
-                    </Frame>
-
-                </Grid>
-
-
-
-
-                <!-- </ViewCell>
-                </DataTemplate>
-                     </ListView.ItemTemplate>
-                    </ListView>-->
             </StackLayout>
-
         </ScrollView>
+        <!--#endregion-->
+
     </ContentPage.Content>
 </ContentPage>

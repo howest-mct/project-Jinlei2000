@@ -19,19 +19,19 @@ namespace KitsuApp.Views
         public AnimeOverview()
         {
             InitializeComponent();
-            TestKitsuRepository();
-            
+            ShowAnime();
+
         }
-        private async Task TestKitsuRepository()
+        private async Task ShowAnime()
         {
             Debug.WriteLine("TestKitsuRepository");
-            List<Anime> animes = await KitsuRepository.GetAnimesAsync();
-            Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxx" + animes.Count);
-            foreach (Anime anime in animes)
-            {
-                Debug.WriteLine(anime.AnimeInfo.Name);
-            }
-            lvwTrending.ItemsSource = animes;
+            cvwTrending.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "trending");
+            cvwPopular.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "popular");
+            cvwRated.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "rated");
+            cvwFavorite.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "favorite");
+            cvwUpdated.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "updated");
+            cvwUpcoming.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "upcoming");
+            cvwMovie.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "movie");
         }
     }
 }

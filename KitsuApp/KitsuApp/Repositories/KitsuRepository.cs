@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
@@ -22,10 +23,21 @@ namespace KitsuApp.Repositories
             //client.DefaultRequestHeaders.Add("Content-Type", "application/vnd.api+json");
             return client;
         }
-        
-        public static async Task<List<Anime>> GetAnimesAsync()
+
+        // Get Anime by amount & filter type (trending, popular, rated, favorite, updated, upcoming, movie)
+        public static async Task<List<Anime>> GetAnimesAsync(int amount,string type)
         {
-            string url = $"{_BASEURL}/anime";
+            string extra = "";
+            if (type == "rated"){ extra = "&sort=-averageRating"; }
+            else if (type == "popular") { extra = "&sort=popularityRank"; }
+            else if (type == "updated") { extra = "&sort=-updatedAt"; }
+            else if (type == "favorite") { extra = "&sort=-favoritesCount"; }
+            else if (type == "movie") { extra = "&sort=popularityRank&filter[subtype]=movie"; }
+            else if (type == "upcoming") { extra = "&filter[status]=upcoming"; }
+
+            string url = $"{_BASEURL}/anime?page[limit]={amount}{extra}";
+            if (type == "trending") { url = $"{_BASEURL}/trending/anime"; }
+            
             Debug.WriteLine(url);
             using (HttpClient client = GetHttpClient())
             {
@@ -38,6 +50,7 @@ namespace KitsuApp.Repositories
                     JToken data = fullObject.SelectToken("data");
                     //Convert JToken to List<Anime>
                     List<Anime> animes = data.ToObject<List<Anime>>();
+                    // return 8 animes
                     return animes;
                 }
                 catch (Exception ex)
@@ -47,6 +60,14 @@ namespace KitsuApp.Repositories
             }
         }
 
+        // Get Anime by ID
 
+        // Get Manga by amount & filter type
+
+        // Get Manga by ID
+
+        // Get all genres
+
+        // Get genre by ID
     }
 }
