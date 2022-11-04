@@ -1,5 +1,4 @@
-﻿using DLToolkit.Forms.Controls;
-using KitsuApp.Models;
+﻿using KitsuApp.Models;
 using KitsuApp.Repositories;
 using System;
 using System.Collections.Generic;

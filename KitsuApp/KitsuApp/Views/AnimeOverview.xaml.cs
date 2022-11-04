@@ -1,5 +1,4 @@
-﻿using DLToolkit.Forms.Controls;
-using KitsuApp.Models;
+﻿using KitsuApp.Models;
 using KitsuApp.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,12 +18,21 @@ namespace KitsuApp.Views
         public AnimeOverview()
         {
             InitializeComponent();
+            SetGenres();
             ShowAnime();
-
         }
+
+        // fill the picker with genres
+        private async Task SetGenres()
+        {
+            Debug.WriteLine("SetGenres");
+            PickerGenres.ItemsSource = await KitsuRepository.GetGenresAsync();
+        }
+
+        // Show Anime by filter
         private async Task ShowAnime()
         {
-            Debug.WriteLine("TestKitsuRepository");
+            Debug.WriteLine("ShowAnime");
             cvwTrending.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "trending");
             cvwPopular.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "popular");
             cvwRated.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "rated");
@@ -32,6 +40,19 @@ namespace KitsuApp.Views
             cvwUpdated.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "updated");
             cvwUpcoming.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "upcoming");
             cvwMovie.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "movie");
+        }
+
+        // Picker selected genre
+        private void PickerGenres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Picker selected genre");
+            Genre selectedGenre = (Genre)PickerGenres.SelectedItem;
+            if (selectedGenre != null)
+            {
+                Navigation.PushAsync(new FilteredByGenrePage(selectedGenre));
+            }
+            // pickerGenres back to default
+            PickerGenres.SelectedIndex = -1;
         }
     }
 }

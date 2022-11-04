@@ -25,10 +25,10 @@ namespace KitsuApp.Repositories
         }
 
         // Get Anime by amount & filter type (trending, popular, rated, favorite, updated, upcoming, movie)
-        public static async Task<List<Anime>> GetAnimesAsync(int amount,string type)
+        public static async Task<List<Anime>> GetAnimesAsync(int amount, string type)
         {
             string extra = "";
-            if (type == "rated"){ extra = "&sort=-averageRating"; }
+            if (type == "rated") { extra = "&sort=-averageRating"; }
             else if (type == "popular") { extra = "&sort=popularityRank"; }
             else if (type == "updated") { extra = "&sort=-updatedAt"; }
             else if (type == "favorite") { extra = "&sort=-favoritesCount"; }
@@ -36,8 +36,8 @@ namespace KitsuApp.Repositories
             else if (type == "upcoming") { extra = "&filter[status]=upcoming"; }
 
             string url = $"{_BASEURL}/anime?page[limit]={amount}{extra}";
-            if (type == "trending") { url = $"{_BASEURL}/trending/anime"; }
-            
+            if (type == "trending") { url = $"{_BASEURL}/trending/anime?limit={amount}"; }
+
             Debug.WriteLine(url);
             using (HttpClient client = GetHttpClient())
             {
@@ -50,11 +50,11 @@ namespace KitsuApp.Repositories
                     JToken data = fullObject.SelectToken("data");
                     //Convert JToken to List<Anime>
                     List<Anime> animes = data.ToObject<List<Anime>>();
-                    // return 8 animes
                     return animes;
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine(ex);
                     throw ex;
                 }
             }
@@ -67,7 +67,33 @@ namespace KitsuApp.Repositories
         // Get Manga by ID
 
         // Get all genres
+        public static async Task<List<Genre>> GetGenresAsync()
+        {
+            string url = $"{_BASEURL}/genres?page[limit]=100";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    JToken data = fullObject.SelectToken("data");
+                    JToken links = fullObject.SelectToken("links");
+                    List<Genre> genres = data.ToObject<List<Genre>>();
+                    return genres;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Get genre by ID
+
+        // Get your favorite Animes
+
+        // Get your favorite Manga
     }
 }

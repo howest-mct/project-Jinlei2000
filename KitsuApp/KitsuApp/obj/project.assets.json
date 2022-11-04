@@ -2,22 +2,6 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "DLToolkit.Forms.Controls.FlowListView/2.0.11": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Forms": "2.0.0.6482"
-        },
-        "compile": {
-          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+netstandard1.0/DLToolkit.Forms.Controls.FlowListView.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+netstandard1.0/DLToolkit.Forms.Controls.FlowListView.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -112,19 +96,6 @@
     }
   },
   "libraries": {
-    "DLToolkit.Forms.Controls.FlowListView/2.0.11": {
-      "sha512": "n/TIbW3a7q/h5wA5vt8VfkN3eecJN8nMlPVu3NS7hvFODg0YqFHXDgbX1O/a9agcuk5Km6DZqJqpxpcYRS9sOQ==",
-      "type": "package",
-      "path": "dltoolkit.forms.controls.flowlistview/2.0.11",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dltoolkit.forms.controls.flowlistview.2.0.11.nupkg.sha512",
-        "dltoolkit.forms.controls.flowlistview.nuspec",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+netstandard1.0/DLToolkit.Forms.Controls.FlowListView.dll",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+netstandard1.0/DLToolkit.Forms.Controls.FlowListView.xml"
-      ]
-    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
@@ -604,7 +575,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "DLToolkit.Forms.Controls.FlowListView >= 2.0.11",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 13.0.1",
       "Xamarin.Essentials >= 1.7.0",
@@ -656,10 +626,6 @@
       "netstandard2.0": {
         "targetAlias": "netstandard2.0",
         "dependencies": {
-          "DLToolkit.Forms.Controls.FlowListView": {
-            "target": "Package",
-            "version": "[2.0.11, )"
-          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",

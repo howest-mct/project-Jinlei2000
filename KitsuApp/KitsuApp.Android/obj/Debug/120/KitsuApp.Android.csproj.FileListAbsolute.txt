@@ -1266,14 +1266,3 @@ C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Andro
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\stamp\_GenerateJavaStubs.stamp
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\DLToolkit.Forms.Controls.FlowListView.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Collections.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Diagnostics.Debug.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Linq.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.ObjectModel.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Reflection.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Reflection.Extensions.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Resources.ResourceManager.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Runtime.Extensions.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Threading.dll
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\android\assets\System.Threading.Tasks.dll
