@@ -18,6 +18,7 @@
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Margin" Value="0,2,0,0"/>
                 <Setter Property="FontFamily" Value="InterMedium"/>
+                <Setter Property="Opacity" Value="0.5"/>
             </Style>
             <Style x:Key="buttonAddFavoStyle" TargetType="Button">
                 <Setter Property="CornerRadius" Value="50"/>
@@ -46,7 +47,7 @@
                 <!--#region Trending now-->
                 <FlexLayout>
                     <Label Text="Trending Now" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="Button_Clicked_Trending" Style="{StaticResource buttonSeeMoreStyle}"/>
                 </FlexLayout>
 
                 <CollectionView SelectionMode="Single" x:Name="cvwTrending" HeightRequest="190" Margin="0,0,0,10">
@@ -94,7 +95,7 @@
                 <!--#region Most Popular-->
                 <FlexLayout>
                     <Label Text="Most Popular" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="Button_Clicked_Popular" Style="{StaticResource buttonSeeMoreStyle}"/>
                 </FlexLayout>
 
                 <CollectionView SelectionMode="Single" x:Name="cvwPopular" HeightRequest="190" Margin="0,0,0,10">
@@ -142,7 +143,7 @@
                 <!--#region Highest Rated-->
                 <FlexLayout>
                     <Label Text="Highest Rated" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="Button_Clicked_Rated" Style="{StaticResource buttonSeeMoreStyle}"/>
                 </FlexLayout>
 
                 <CollectionView SelectionMode="Single" x:Name="cvwRated" HeightRequest="190" Margin="0,0,0,10">
@@ -190,7 +191,7 @@
                 <!--#region Best Favorite-->
                 <FlexLayout>
                     <Label Text="Best Favorite" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="Button_Clicked_Favorite" Style="{StaticResource buttonSeeMoreStyle}"/>
                 </FlexLayout>
 
                 <CollectionView SelectionMode="Single" x:Name="cvwFavorite" HeightRequest="190" Margin="0,0,0,10">
@@ -238,7 +239,7 @@
                 <!--#region Recently Updated-->
                 <FlexLayout>
                     <Label Text="Recently Updated" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="Button_Clicked_Updated" Style="{StaticResource buttonSeeMoreStyle}"/>
                 </FlexLayout>
 
                 <CollectionView SelectionMode="Single" x:Name="cvwUpdated" HeightRequest="190" Margin="0,0,0,10">
@@ -286,7 +287,7 @@
                 <!--#region Top Upcoming-->
                 <FlexLayout>
                     <Label Text="Top Upcoming" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="Button_Clicked_Upcoming" Style="{StaticResource buttonSeeMoreStyle}"/>
                 </FlexLayout>
 
                 <CollectionView SelectionMode="Single" x:Name="cvwUpcoming" HeightRequest="190" Margin="0,0,0,10">
@@ -334,7 +335,7 @@
                 <!--#region Top Movies-->
                 <FlexLayout>
                     <Label Text="Top Movies" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="Button_Clicked_Movies" Style="{StaticResource buttonSeeMoreStyle}"/>
                 </FlexLayout>
 
                 <CollectionView SelectionMode="Single" x:Name="cvwMovie" HeightRequest="190" Margin="0,0,0,10">

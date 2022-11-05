@@ -63,6 +63,40 @@ namespace KitsuApp.Repositories
         // Get Anime by ID
 
         // Get Manga by amount & filter type
+        public static async Task<List<Manga>> GetMangasAsync(int amount, string type)
+        {
+            string extra = "";
+            if (type == "rated") { extra = "&sort=-averageRating"; }
+            else if (type == "popular") { extra = "&sort=popularityRank"; }
+            else if (type == "updated") { extra = "&sort=-updatedAt"; }
+            else if (type == "favorite") { extra = "&sort=-favoritesCount"; }
+            else if (type == "movie") { extra = "&sort=popularityRank&filter[subtype]=movie"; }
+            else if (type == "upcoming") { extra = "&filter[status]=upcoming"; }
+
+            string url = $"{_BASEURL}/manga?page[limit]={amount}{extra}";
+            if (type == "trending") { url = $"{_BASEURL}/trending/manga?limit={amount}"; }
+
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    //object deserializeren naar JObject (< newtonsoft)
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    //Find token "data" in JObject
+                    JToken data = fullObject.SelectToken("data");
+                    //Convert JToken to List<Manga>
+                    List<Manga> mangas = data.ToObject<List<Manga>>();
+                    return mangas;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Get Manga by ID
 
