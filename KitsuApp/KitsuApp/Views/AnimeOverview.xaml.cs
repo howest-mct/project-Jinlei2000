@@ -42,14 +42,14 @@ namespace KitsuApp.Views
             cvwMovie.ItemsSource = await KitsuRepository.GetAnimesAsync(10, "movie");
         }
 
-        // Picker selected genre
+        // Picker selected genre & go to FilteredByGenreOverview
         private void PickerGenres_SelectedIndexChanged(object sender, EventArgs e)
         {
             Debug.WriteLine("Picker selected genre");
             Genre selectedGenre = (Genre)PickerGenres.SelectedItem;
             if (selectedGenre != null)
             {
-                Navigation.PushAsync(new FilteredByGenrePage(selectedGenre));
+                Navigation.PushAsync(new FilteredByGenrePage(selectedGenre, "anime"));
             }
             // pickerGenres back to default
             PickerGenres.SelectedIndex = -1;
