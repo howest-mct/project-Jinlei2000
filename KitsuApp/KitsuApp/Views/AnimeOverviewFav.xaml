@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="KitsuApp.Views.AnimeOverviewFav">
 
     <!--#region Styling Component-->
@@ -76,11 +75,13 @@
                                 </Grid.RowDefinitions>
                                 <Label Text="{Binding FavName}" WidthRequest="150" HorizontalTextAlignment="Center" VerticalOptions="End" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterSemiBold" TextColor="#0D0D0D"/>
                                 <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
-                                    <Image Source="{Binding AnimeInfo.PosterImage.Medium}"/>
+                                    <Frame IsClippedToBounds="True" Padding="0" CornerRadius="16">
+                                        <Image Source="{Binding AnimeInfo.PosterImage.Medium}"/>
+                                    </Frame>
                                     <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}"/>
                                     <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}"/>
                                 </StackLayout>
-                                <Label Text="{Binding AnimeInfo.Name}" WidthRequest="150" HorizontalTextAlignment="Center" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                <Label Text="{Binding AnimeInfo.Name}" WidthRequest="142" HorizontalTextAlignment="Center" Grid.Row="2" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                             </Grid>
 
                         </DataTemplate>
@@ -90,6 +91,6 @@
             </StackLayout>
         </ScrollView>
         <!--#endregion-->
-
+        
     </ContentPage.Content>
 </ContentPage>

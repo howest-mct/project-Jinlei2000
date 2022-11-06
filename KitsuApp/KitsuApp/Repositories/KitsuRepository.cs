@@ -60,8 +60,6 @@ namespace KitsuApp.Repositories
             }
         }
 
-        // Get Anime by ID
-
         // Get Manga by amount & filter type
         public static async Task<List<Manga>> GetMangasAsync(int amount, string type)
         {
@@ -97,8 +95,6 @@ namespace KitsuApp.Repositories
                 }
             }
         }
-
-        // Get Manga by ID
 
         // Get all genres
         public static async Task<List<Genre>> GetGenresAsync()
@@ -170,9 +166,16 @@ namespace KitsuApp.Repositories
             }
         }
 
-
         // Get your favorite Animes
 
-        // Get your favorite Manga
+        // Get your favorite Mangas
+
+        // Post your favorite Anime
+
+        // Post your favorite Manga
+
+        // Put your favorite Anime
+
+        // Put your favorite Manga
     }
 }

@@ -59,7 +59,9 @@ namespace KitsuApp.Views
         private void GoToSeeMorePage(object sender, EventArgs e)
         {
             Debug.WriteLine("GoToSeeMorePage");
+            // get the button that was clicked
             Button button = (Button)sender;
+            // Get the filter of CommandParameter (to know which filter to use)
             string filter = button.CommandParameter.ToString();
             string title = GetTitle(filter);
             Navigation.PushAsync(new SeeMorePage(filter, "anime", title));
@@ -93,11 +95,14 @@ namespace KitsuApp.Views
         private void GoToDetailPage(object sender, EventArgs e)
         {
             Debug.WriteLine("GoToDetailPage");
+            // Get the selected item of the correct CollectionView 
             Collection anime = (Collection)((CollectionView)sender).SelectedItem;
             if (anime != null)
             {
                 Navigation.PushAsync(new DetailPage(anime));
             }
+            // Reset the selected item
+            ((CollectionView)sender).SelectedItem = null;
         }
 
     }
