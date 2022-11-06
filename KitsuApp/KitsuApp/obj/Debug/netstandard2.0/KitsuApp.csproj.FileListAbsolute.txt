@@ -39,3 +39,4 @@ C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\D
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\MangaOverviewFav.xaml.g.cs
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\FilteredByGenrePage.xaml.g.cs
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\SeeMorePage.xaml.g.cs
+C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\DetailPage.xaml.g.cs

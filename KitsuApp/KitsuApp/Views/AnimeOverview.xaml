@@ -47,28 +47,23 @@
                 <!--#region Trending now-->
                 <FlexLayout>
                     <Label Text="Trending Now" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Clicked="Button_Clicked_Trending" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="GoToSeeMorePage" Style="{StaticResource buttonSeeMoreStyle}" CommandParameter="trending"/>
                 </FlexLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwTrending" HeightRequest="190" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwTrending" HeightRequest="190"  Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Padding="4" Margin="5,0" BackgroundColor="Transparent" WidthRequest="105">
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -80,10 +75,12 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Small}" />
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                        </Frame>
                                         <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
                             </Frame>
 
@@ -95,28 +92,23 @@
                 <!--#region Most Popular-->
                 <FlexLayout>
                     <Label Text="Most Popular" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Clicked="Button_Clicked_Popular" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="GoToSeeMorePage" Style="{StaticResource buttonSeeMoreStyle}" CommandParameter="popular"/>
                 </FlexLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwPopular" HeightRequest="190" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwPopular" HeightRequest="190"  Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Padding="4" Margin="5,0" BackgroundColor="Transparent" WidthRequest="105">
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -128,10 +120,12 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Small}" />
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                        </Frame>
                                         <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
                             </Frame>
 
@@ -143,28 +137,23 @@
                 <!--#region Highest Rated-->
                 <FlexLayout>
                     <Label Text="Highest Rated" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Clicked="Button_Clicked_Rated" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="GoToSeeMorePage" Style="{StaticResource buttonSeeMoreStyle}" CommandParameter="rated"/>
                 </FlexLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwRated" HeightRequest="190" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwRated" HeightRequest="190"  Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Padding="4" Margin="5,0" BackgroundColor="Transparent" WidthRequest="105">
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -176,10 +165,12 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Small}" />
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                        </Frame>
                                         <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
                             </Frame>
 
@@ -191,28 +182,23 @@
                 <!--#region Best Favorite-->
                 <FlexLayout>
                     <Label Text="Best Favorite" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Clicked="Button_Clicked_Favorite" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="GoToSeeMorePage" Style="{StaticResource buttonSeeMoreStyle}" CommandParameter="favorite"/>
                 </FlexLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwFavorite" HeightRequest="190" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwFavorite" HeightRequest="190"  Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Padding="4" Margin="5,0" BackgroundColor="Transparent" WidthRequest="105">
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -224,10 +210,12 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Small}" />
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                        </Frame>
                                         <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
                             </Frame>
 
@@ -239,28 +227,23 @@
                 <!--#region Recently Updated-->
                 <FlexLayout>
                     <Label Text="Recently Updated" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Clicked="Button_Clicked_Updated" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="GoToSeeMorePage" Style="{StaticResource buttonSeeMoreStyle}" CommandParameter="updated"/>
                 </FlexLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwUpdated" HeightRequest="190" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwUpdated" HeightRequest="190"  Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Padding="4" Margin="5,0" BackgroundColor="Transparent" WidthRequest="105">
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -272,10 +255,12 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Small}" />
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                        </Frame>
                                         <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
                             </Frame>
 
@@ -287,28 +272,23 @@
                 <!--#region Top Upcoming-->
                 <FlexLayout>
                     <Label Text="Top Upcoming" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Clicked="Button_Clicked_Upcoming" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="GoToSeeMorePage" Style="{StaticResource buttonSeeMoreStyle}" CommandParameter="upcoming"/>
                 </FlexLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwUpcoming" HeightRequest="190" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwUpcoming" HeightRequest="190"  Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Padding="4" Margin="5,0" BackgroundColor="Transparent" WidthRequest="105">
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -320,10 +300,12 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Small}" />
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                        </Frame>
                                         <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
                             </Frame>
 
@@ -335,28 +317,23 @@
                 <!--#region Top Movies-->
                 <FlexLayout>
                     <Label Text="Top Movies" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
-                    <Button Text="See more" Clicked="Button_Clicked_Movies" Style="{StaticResource buttonSeeMoreStyle}"/>
+                    <Button Text="See more" Clicked="GoToSeeMorePage" Style="{StaticResource buttonSeeMoreStyle}" CommandParameter="movie"/>
                 </FlexLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwMovie" HeightRequest="190" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwMovie" HeightRequest="190"  Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Padding="4" Margin="5,0" BackgroundColor="Transparent" WidthRequest="105">
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -368,10 +345,12 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Small}" />
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                        </Frame>
                                         <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
                             </Frame>
 

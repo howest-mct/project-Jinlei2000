@@ -55,53 +55,50 @@ namespace KitsuApp.Views
             PickerGenres.SelectedIndex = -1;
         }
 
-        // Go to SeeMorePage
-        private void GoToSeeMorePage(string filter, string title)
+        // Listen to all the buttons Clicked events and go to SeeMorePage
+        private void GoToSeeMorePage(object sender, EventArgs e)
         {
             Debug.WriteLine("GoToSeeMorePage");
+            Button button = (Button)sender;
+            string filter = button.CommandParameter.ToString();
+            string title = GetTitle(filter);
             Navigation.PushAsync(new SeeMorePage(filter, "anime", title));
         }
 
-        // Listen to the Clicked event of the Trending button
-        private void Button_Clicked_Trending(object sender, EventArgs e)
+        // Get the title
+        private string GetTitle(string filter)
         {
-            GoToSeeMorePage("trending", "Trending Now");
+            switch (filter)
+            {
+                case "trending":
+                    return "Trending Now";
+                case "popular":
+                    return "Most Popular";
+                case "rated":
+                    return "Highest Rated";
+                case "favorite":
+                    return "Best Favorite";
+                case "updated":
+                    return "Recently Updated";
+                case "upcoming":
+                    return "Top Upcoming";
+                case "movie":
+                    return "Top Movies";
+                default:
+                    return "Anime";
+            }
         }
 
-        // Listen to the Clicked event of the Popular button
-        private void Button_Clicked_Popular(object sender, EventArgs e)
+        // Listen to all the Clicked events of the CollectionView items and go to DetailPage
+        private void GoToDetailPage(object sender, EventArgs e)
         {
-            GoToSeeMorePage("popular", "Most Popular");
+            Debug.WriteLine("GoToDetailPage");
+            Collection anime = (Collection)((CollectionView)sender).SelectedItem;
+            if (anime != null)
+            {
+                Navigation.PushAsync(new DetailPage(anime));
+            }
         }
 
-        // Listen to the Clicked event of the Rated button
-        private void Button_Clicked_Rated(object sender, EventArgs e)
-        {
-            GoToSeeMorePage("rated", "Highest Rated");
-        }
-
-        // Listen to the Clicked event of the Favorite button
-        private void Button_Clicked_Favorite(object sender, EventArgs e)
-        {
-            GoToSeeMorePage("favorite", "Best Favorite");
-        }
-
-        // Listen to the Clicked event of the Updated button
-        private void Button_Clicked_Updated(object sender, EventArgs e)
-        {
-            GoToSeeMorePage("updated", "Recently Updated");
-        }
-
-        // Listen to the Clicked event of the Upcoming button
-        private void Button_Clicked_Upcoming(object sender, EventArgs e)
-        {
-            GoToSeeMorePage("upcoming", "Top Upcoming");
-        }
-
-        // Listen to the Clicked event of the Movie button
-        private void Button_Clicked_Movies(object sender, EventArgs e)
-        {
-            GoToSeeMorePage("movie", "Top Movies");
-        }
     }
 }
