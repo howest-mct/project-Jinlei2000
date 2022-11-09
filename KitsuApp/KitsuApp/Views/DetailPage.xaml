@@ -1,12 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="KitsuApp.Views.DetailPage">
+
+    <!--#region Styling Component-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonAddFavoStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Background" Value="white"/>
+                <Setter Property="WidthRequest" Value="32"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="FontFamily" Value="MaterialIconsRegular"/>
+                <Setter Property="TextColor" Value="#4056F4"/>
+                <Setter Property="Margin" Value="-42,4,0,0"/>
+                <Setter Property="BorderColor" Value="#4056F4" />
+                <Setter Property="BorderWidth" Value="0.25" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--#endregion-->
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="DetailPage!!!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView Orientation="Vertical">
+            <StackLayout>
+                <Frame HeightRequest="200" HasShadow="False">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Orientation="Horizontal">
+                            <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                <Image x:Name="imgPoster"/>
+                            </Frame>
+                            <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Margin="-20,0,0,0">
+                            <FlexLayout>
+                                <Label x:Name="lblName" WidthRequest="150" VerticalOptions="Start" HorizontalOptions="Start" FontSize="14" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                <StackLayout Margin="3,0,0,0">
+                                    <skia:SKCanvasView x:Name="canvasView" PaintSurface="canvasView_PaintSurface"/>
+                                    <Label x:Name="lblRating" Text="8.68"  Margin="0,-35,0,0" HorizontalOptions="Center"  FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
+                                </StackLayout>
+                            </FlexLayout>
+                        </StackLayout>
+                    </Grid>
+
+                </Frame>
+
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

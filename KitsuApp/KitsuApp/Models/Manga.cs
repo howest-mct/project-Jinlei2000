@@ -36,6 +36,22 @@ namespace KitsuApp.Models
             }
         }
 
+        public float Rating
+        {
+            get
+            {
+                if (MangaInfo.AverageRating == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    //round decimal to 2 decimal places
+                    return (float)Math.Round(float.Parse(MangaInfo.AverageRating) / 10, 2);
+                }
+            }
+        }
+
         //[JsonExtensionData]
         //private Dictionary<string, JToken> _attributes = new Dictionary<string, JToken>();
 

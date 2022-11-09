@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Text;
 using Xamarin.Forms;
@@ -38,6 +39,22 @@ namespace KitsuApp.Models
                 int minutes = TotalMinutes % 60;
                 int hours = (TotalMinutes - 20) / 60;
                 return $"{hours}h {minutes}m";
+            }
+        }
+
+        public float Rating
+        {
+            get
+            {
+                if (AnimeInfo.AverageRating == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    //round decimal to 2 decimal places
+                    return (float)Math.Round(float.Parse(AnimeInfo.AverageRating) / 10, 2);
+                }
             }
         }
 
