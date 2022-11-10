@@ -12,6 +12,8 @@ using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Xml.Linq;
+using Xamarin.Essentials;
+using KitsuApp.Repositories;
 
 namespace KitsuApp.Views
 {
@@ -19,6 +21,7 @@ namespace KitsuApp.Views
     public partial class DetailPage : ContentPage
     {
         public Collection CollectionContent { get; set; }
+        public string TrailerLink { get; set; }
         public DetailPage(Collection collection)
         {
             InitializeComponent();
@@ -26,22 +29,62 @@ namespace KitsuApp.Views
             ShowDetail();
         }
 
-        private void ShowDetail()
+        private async Task ShowDetail()
         {
             if (CollectionContent.CollectionType == "anime")
             {
                 Anime anime = (Anime)CollectionContent;
-                Debug.WriteLine("ShowDetail: " + anime.AnimeInfo.Slug);
+                Debug.WriteLine("ShowDetail: " + anime.AnimeInfo.Name);
                 lblName.Text = anime.AnimeInfo.Name;
                 lblRating.Text = anime.Rating.ToString();
                 imgPoster.Source = anime.AnimeInfo.PosterImage.Medium;
+                lblTotalTime.Text = anime.TotalTime;
+                lblEpisodes.Text = anime.AnimeInfo.EpisodeCount == 0 || anime.AnimeInfo.EpisodeCount == 1 ? "N/A" : anime.AnimeInfo.EpisodeCount.ToString();
+                lblDuration.Text = anime.AnimeInfo.EpisodeLength == 0 || anime.AnimeInfo.EpisodeCount == 1 ? "N/A" : anime.AnimeInfo.EpisodeLength.ToString() + "m per ep";
+                lblType.Text = anime.AnimeInfo.Subtype;
+                lblStatus.Text = anime.AnimeInfo.Status.Substring(0, 1).ToUpper() + anime.AnimeInfo.Status.Substring(1);
+                lblAired.Text = anime.Aired;
+                lblSynopsis.Text = anime.AnimeInfo.Synopsis == null ? "No Description" : anime.AnimeInfo.Synopsis;
+
+                lblSeason.Text = anime.Season;
+                lblHighestRatedRank.Text = anime.AnimeInfo.HighestRatedRank == null ? "#?" : $"#{anime.AnimeInfo.HighestRatedRank}";
+                lblPopularityRank.Text = anime.AnimeInfo.PopularityRank == null ? "#?" : $"#{anime.AnimeInfo.PopularityRank}";
+                lblMembers.Text = anime.AnimeInfo.Members == null ? "0" : anime.AnimeInfo.Members;
+                lblAgeRating.Text = anime.AgeRating;
+
+
+                if (anime.TrailerLink == "N/A")
+                {
+                    btnTrailer.IsVisible = false;
+                }
+                TrailerLink = anime.TrailerLink;
+
+                
+                List<Genre> genres = await KitsuRepository.GetGenresFromAnimeIDAsync(anime.Id);
+                Debug.WriteLine("Genres: " + genres.Count);
+                if (genres.Count == 0)
+                {
+                    cvwGenre.IsVisible = false;
+                    lblGenre.IsVisible = false;
+                }
+                else
+                {
+                    cvwGenre.ItemsSource = genres;
+                }
+
+
+
             }
             else if (CollectionContent.CollectionType == "manga")
             {
                 Manga manga = (Manga)CollectionContent;
                 Debug.WriteLine("ShowDetail: " + manga.MangaInfo.Slug);
+
+                btnTrailer.IsVisible = false;
+
             }
         }
+
 
         private void canvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
@@ -100,6 +143,22 @@ namespace KitsuApp.Views
             canvas.DrawPath(sKPathGray, skPaintGray);
 
             canvas.DrawPath(skPath, skPaint);
+        }
+
+        private void Button_Trailer_Clicked(object sender, EventArgs e)
+        {
+            Uri uri = new Uri(TrailerLink);
+            Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+        }
+
+        private void btnGenre_Clicked(object sender, EventArgs e)
+        {
+            Genre genre = (Genre)((Button)sender).BindingContext;
+            //Debug.WriteLine("Genre: " + genre.GenreInfo.Name) ;
+            if (genre != null)
+            {
+                Navigation.PushAsync(new FilteredByGenrePage(genre, "anime"));
+            }
         }
     }
 }

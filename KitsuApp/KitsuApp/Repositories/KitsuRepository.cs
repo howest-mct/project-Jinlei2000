@@ -166,6 +166,52 @@ namespace KitsuApp.Repositories
             }
         }
 
+        // Get Genre by Anime ID
+        public static async Task<List<Genre>> GetGenresFromAnimeIDAsync(string animeId)
+        {
+            string url = $"{_BASEURL}/anime/{animeId}/genres?page[limit]=100";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    JToken data = fullObject.SelectToken("data");
+                    List<Genre> genres = data.ToObject<List<Genre>>();
+                    return genres;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
+        // Get Genre by Manga ID
+        public static async Task<List<Genre>> GetGenresFromMangaIDAsync(string mangaId)
+        {
+            string url = $"{_BASEURL}/manga/{mangaId}/genres?page[limit]=100";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    JToken data = fullObject.SelectToken("data");
+                    List<Genre> genres = data.ToObject<List<Genre>>();
+                    return genres;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
         // Get your favorite Animes
 
         // Get your favorite Mangas

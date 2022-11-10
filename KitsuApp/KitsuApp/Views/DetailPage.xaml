@@ -21,6 +21,17 @@
                 <Setter Property="BorderColor" Value="#4056F4" />
                 <Setter Property="BorderWidth" Value="0.25" />
             </Style>
+            <Style x:Key="buttonGenreStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="Background" Value="#4056F4"/>
+                <Setter Property="Padding" Value="20,0"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontFamily" Value="InterBold"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <!--#endregion-->
@@ -29,7 +40,6 @@
         <ScrollView Orientation="Vertical">
             <StackLayout>
                 <Frame HeightRequest="200" HasShadow="False">
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
@@ -52,11 +62,78 @@
                                     <Label x:Name="lblRating" Text="8.68"  Margin="0,-35,0,0" HorizontalOptions="Center"  FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
                                 </StackLayout>
                             </FlexLayout>
+                            <Label Text="TOTAL TIME" Margin="0,5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                            <Label x:Name="lblTotalTime" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+
+                            <FlexLayout Margin="0,8,0,0">
+                                <StackLayout Margin="0,0,30,0">
+                                    <Label Text="EPISODES" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                    <Label x:Name="lblEpisodes" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="DURATION" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                    <Label x:Name="lblDuration" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                </StackLayout>
+                            </FlexLayout>
+
+                            <FlexLayout Margin="0,8,0,0">
+                                <StackLayout Margin="0,0,53,0">
+                                    <Label Text="TYPE" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                    <Label x:Name="lblType" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="STATUS" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                    <Label x:Name="lblStatus" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                </StackLayout>
+                            </FlexLayout>
+                            <Label Text="Aired" Margin="0,8,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                            <Label x:Name="lblAired" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
                         </StackLayout>
                     </Grid>
-
                 </Frame>
+                <Frame HasShadow="False" Margin="0,-10,0,50" Padding="20,0">
+                    <StackLayout>
+                        <Button x:Name="btnTrailer" Text="Watch Trailer" Clicked="Button_Trailer_Clicked" />
+                        <Label Text="Synopsis" FontSize="14" FontFamily="InterSemiBold" TextColor="#434343"/>
+                        <Label x:Name="lblSynopsis" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
 
+                        <Label x:Name="lblGenre" Text="Genre" Margin="0,10,0,0" FontSize="14" FontFamily="InterSemiBold" TextColor="#434343"/>
+                        <CollectionView SelectionMode="Single" x:Name="cvwGenre" HeightRequest="40">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Clicked="btnGenre_Clicked" Text="{Binding GenreInfo.Name}" Style="{StaticResource buttonGenreStyle}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                        <Label Text="More Info" Margin="0,10,0,0" FontSize="14" FontFamily="InterSemiBold" TextColor="#434343"/>
+                        <Grid RowSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Season" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
+                            <Label x:Name="lblSeason" Grid.Column="1" HorizontalOptions="End" FontSize="12" FontFamily="InterSemiBold" TextColor="#434343"/>
+
+                            <Label Text="Highest Rated Rank" Grid.Row="1" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
+                            <Label x:Name="lblHighestRatedRank" Grid.Row="1" Grid.Column="1" HorizontalOptions="End" FontSize="12" FontFamily="InterSemiBold" TextColor="#434343"/>
+
+                            <Label Text="Popularity Rank" Grid.Row="2" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
+                            <Label x:Name="lblPopularityRank" Grid.Row="2" Grid.Column="1" HorizontalOptions="End" FontSize="12" FontFamily="InterSemiBold" TextColor="#434343"/>
+
+                            <Label Text="Members" Grid.Row="3" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
+                            <Label x:Name="lblMembers" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" FontSize="12" FontFamily="InterSemiBold" TextColor="#434343"/>
+
+                            <Label Text="AgeRating" Grid.Row="4" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
+                            <Label x:Name="lblAgeRating" Grid.Row="4" Grid.Column="1" HorizontalOptions="End" FontSize="12" FontFamily="InterSemiBold" TextColor="#434343"/>
+                        </Grid>
+
+                    </StackLayout>
+                </Frame>
 
             </StackLayout>
         </ScrollView>

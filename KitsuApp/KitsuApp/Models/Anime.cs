@@ -3,6 +3,8 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using Xamarin.Forms;
@@ -24,7 +26,7 @@ namespace KitsuApp.Models
             get
             {
                 int TotalMinutes = 0;
-                if (AnimeInfo.EpisodeLength == 0 || AnimeInfo.TotalLength == 0)
+                if (AnimeInfo.EpisodeLength == 0 && AnimeInfo.TotalLength == 0)
                 {
                     return "N/A";
                 }
@@ -38,7 +40,56 @@ namespace KitsuApp.Models
                 }
                 int minutes = TotalMinutes % 60;
                 int hours = (TotalMinutes - 20) / 60;
+                if (minutes == 0)
+                {
+                    return $"{hours}h";
+                }
                 return $"{hours}h {minutes}m";
+            }
+        }
+
+        public string Aired
+        {
+            get
+            {
+                string start = "";
+                string end = "";
+                if (AnimeInfo.StartDate == null)
+                {
+                    start = "?";
+                }
+                else
+                {
+                    DateTime dateTime = DateTime.Parse(AnimeInfo.StartDate);
+                    start = dateTime.ToString("MMM M yyyy");
+                }
+
+                if (AnimeInfo.EndDate == null)
+                {
+                    end = "?";
+                }
+                else
+                {
+                    DateTime dateTime = DateTime.Parse(AnimeInfo.EndDate);
+                    end = dateTime.ToString("MMM M yyyy");
+                }
+                return $"{start} - {end}";
+            }
+        }
+
+        public string AgeRating
+        {
+            get
+            {
+                if (AnimeInfo.AgeRatingGuide != null)
+                {
+                    return AnimeInfo.AgeRatingGuide;
+                }
+                else if (AnimeInfo.AgeRating != null)
+                {
+                    return AnimeInfo.AgeRating;
+                }
+                return "N/A";
             }
         }
 
@@ -55,6 +106,37 @@ namespace KitsuApp.Models
                     //round decimal to 2 decimal places
                     return (float)Math.Round(float.Parse(AnimeInfo.AverageRating) / 10, 2);
                 }
+            }
+        }
+
+        public string TrailerLink
+        {
+            get
+            {
+                if (AnimeInfo.YoutubeVideoId == null)
+                {
+                    return "N/A";
+                }
+                else
+                {
+                    return $"https://www.youtube.com/watch?v={AnimeInfo.YoutubeVideoId}";
+                }
+            }
+        }
+
+        public string Season
+        {
+            get
+            {
+                if (AnimeInfo.StartDate == null) return "N/A";
+                string season = "";
+                DateTime date = DateTime.Parse(AnimeInfo.StartDate);
+                float value = (float)date.Month + date.Day / 100f;  // <month>.<day(2 digit)>
+                season = "Autumn";  // Autumn
+                if (value < 9.23) season = "Summer"; // Summer
+                if (value < 6.21) season = "Spring"; // Spring
+                if (value < 3.21 || value >= 12.22) season = "Winter";   // Winter
+                return $"{season} {date.Year}";
             }
         }
 
@@ -84,12 +166,28 @@ namespace KitsuApp.Models
         public string AverageRating { get; set; }
         [JsonProperty(PropertyName = "startDate", NullValueHandling = NullValueHandling.Ignore)]
         public string StartDate { get; set; }
+        [JsonProperty(PropertyName = "endDate", NullValueHandling = NullValueHandling.Ignore)]
+        public string EndDate { get; set; }
         [JsonProperty(PropertyName = "subtype", NullValueHandling = NullValueHandling.Ignore)]
         public string Subtype { get; set; }
         [JsonProperty(PropertyName = "status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
         [JsonProperty(PropertyName = "posterImage", NullValueHandling = NullValueHandling.Ignore)]
         public PosterImage PosterImage { get; set; }
+
+
+        [JsonProperty(PropertyName = "userCount", NullValueHandling = NullValueHandling.Ignore)]
+        public string Members { get; set; }
+        [JsonProperty(PropertyName = "ratingRank", NullValueHandling = NullValueHandling.Ignore)]
+        public string HighestRatedRank { get; set; }
+        [JsonProperty(PropertyName = "popularityRank", NullValueHandling = NullValueHandling.Ignore)]
+        public string PopularityRank { get; set; }
+        [JsonProperty(PropertyName = "ageRating", NullValueHandling = NullValueHandling.Ignore)]
+        public string AgeRating { get; set; }
+        [JsonProperty(PropertyName = "ageRatingGuide", NullValueHandling = NullValueHandling.Ignore)]
+        public string AgeRatingGuide { get; set; }
+        [JsonProperty(PropertyName = "youtubeVideoId", NullValueHandling = NullValueHandling.Ignore)]
+        public string YoutubeVideoId { get; set; }
 
         [JsonProperty(PropertyName = "episodeCount", NullValueHandling = NullValueHandling.Ignore)]
         public int EpisodeCount { get; set; }
