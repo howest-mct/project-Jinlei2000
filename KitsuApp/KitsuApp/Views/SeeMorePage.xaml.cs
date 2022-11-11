@@ -34,5 +34,15 @@ namespace KitsuApp.Views
             }
         }
 
+        private void GoToDetailPage(object sender, SelectionChangedEventArgs e)
+        {
+            Collection selectedAnime = (Collection)cvwSeeMore.SelectedItem;
+            if (selectedAnime != null)
+            {
+                Navigation.PushAsync(new DetailPage(selectedAnime));
+            }
+            // Reset selected item
+            cvwSeeMore.SelectedItem = null;
+        }
     }
 }

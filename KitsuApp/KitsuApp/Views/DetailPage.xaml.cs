@@ -35,6 +35,7 @@ namespace KitsuApp.Views
             {
                 Anime anime = (Anime)CollectionContent;
                 Debug.WriteLine("ShowDetail: " + anime.AnimeInfo.Name);
+                // Standard Info & image
                 lblName.Text = anime.AnimeInfo.Name;
                 lblRating.Text = anime.Rating.ToString();
                 imgPoster.Source = anime.AnimeInfo.PosterImage.Medium;
@@ -46,20 +47,21 @@ namespace KitsuApp.Views
                 lblAired.Text = anime.Aired;
                 lblSynopsis.Text = anime.AnimeInfo.Synopsis == null ? "No Description" : anime.AnimeInfo.Synopsis;
 
+                //More Info
                 lblSeason.Text = anime.Season;
                 lblHighestRatedRank.Text = anime.AnimeInfo.HighestRatedRank == null ? "#?" : $"#{anime.AnimeInfo.HighestRatedRank}";
                 lblPopularityRank.Text = anime.AnimeInfo.PopularityRank == null ? "#?" : $"#{anime.AnimeInfo.PopularityRank}";
                 lblMembers.Text = anime.AnimeInfo.Members == null ? "0" : anime.AnimeInfo.Members;
                 lblAgeRating.Text = anime.AgeRating;
 
-
+                // Trailer
                 if (anime.TrailerLink == "N/A")
                 {
                     btnTrailer.IsVisible = false;
                 }
                 TrailerLink = anime.TrailerLink;
 
-                
+                // Genres
                 List<Genre> genres = await KitsuRepository.GetGenresFromAnimeIDAsync(anime.Id);
                 Debug.WriteLine("Genres: " + genres.Count);
                 if (genres.Count == 0)
@@ -85,7 +87,7 @@ namespace KitsuApp.Views
             }
         }
 
-
+        // Draw the progress circle of the rating
         private void canvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             float degree = 0;
@@ -145,12 +147,14 @@ namespace KitsuApp.Views
             canvas.DrawPath(skPath, skPaint);
         }
 
+        // Open trailer link on browser
         private void Button_Trailer_Clicked(object sender, EventArgs e)
         {
             Uri uri = new Uri(TrailerLink);
             Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
 
+        // Go to the FilteredByGenrePage
         private void btnGenre_Clicked(object sender, EventArgs e)
         {
             Genre genre = (Genre)((Button)sender).BindingContext;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.TizenSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace KitsuApp.Views

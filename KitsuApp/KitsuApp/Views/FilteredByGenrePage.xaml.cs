@@ -39,5 +39,17 @@ namespace KitsuApp.Views
                 cvwSelectedGenre.ItemsSource = await KitsuRepository.GetMangasFromGenreAsync(GenreContent.GenreInfo.Slug);
             }
         }
+
+        // Listen to all the Clicked events of the CollectionView items and go to DetailPage
+        private void GoToDetailPage(object sender, SelectionChangedEventArgs e)
+        {
+            Collection selectedAnime = (Collection)cvwSelectedGenre.SelectedItem;
+            if (selectedAnime != null)
+            {
+                Navigation.PushAsync(new DetailPage(selectedAnime));
+            }
+            // Reset selected item
+            cvwSelectedGenre.SelectedItem = null;
+        }
     }
 }

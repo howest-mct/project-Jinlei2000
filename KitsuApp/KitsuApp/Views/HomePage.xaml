@@ -5,13 +5,15 @@
             x:Class="KitsuApp.Views.HomePage" 
             xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
             Title="Gozzby"
-            
+            BarBackgroundColor="#6677F6"
+            SelectedTabColor="White"
+            UnselectedTabColor="#C5CCFB"
             >
-    
+
     <TabbedPage.ToolbarItems>
         <ToolbarItem Text="Gozzby" Icon="{local:EmbeddedImage ResourceId=KitsuApp.Assets.logo.png }" Order="Primary" Priority="0"/>
     </TabbedPage.ToolbarItems>
-    
+
     <!--TAB 1-->
     <view:AnimeOverview Title="Anime" />
     <!--TAB 2-->

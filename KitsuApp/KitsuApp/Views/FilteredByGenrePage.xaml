@@ -32,7 +32,7 @@
         <ScrollView Orientation="Vertical">
             <StackLayout>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwSelectedGenre" Margin="0,0,0,10">
+                <CollectionView SelectionMode="Single" x:Name="cvwSelectedGenre" Margin="0,0,0,10" SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2"/>
                     </CollectionView.ItemsLayout>

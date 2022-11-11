@@ -15,6 +15,14 @@ namespace KitsuApp.Views
         public AppShell()
         {
             InitializeComponent();
+            //change the color of the selected tab
+            Shell.SetTabBarTitleColor(this, Color.FromHex("#ffffff"));
+
+            //change the color of the tab bar
+            Shell.SetTabBarBackgroundColor(this, Color.FromHex("#6677F6"));
+
+            //change the color of the unselected tab
+            Shell.SetUnselectedColor(this, Color.FromHex("#C5CCFB"));
         }
     }
 }

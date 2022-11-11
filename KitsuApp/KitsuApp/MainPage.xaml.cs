@@ -18,22 +18,10 @@ namespace KitsuApp
         public MainPage()
         {
             InitializeComponent();
-            //TestKitsuRepository();
             //Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             //CheckConnectivity();
         }
-        
-        //private async Task TestKitsuRepository()
-        //{
-        //    Debug.WriteLine("TestKitsuRepository");
-        //    List<Anime> animes = await KitsuRepository.GetAnimesAsync();
-        //    Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxx"+animes.Count);
-        //    foreach (Anime anime in animes)
-        //    {
-        //        Debug.WriteLine(anime.TotalTime);
-        //    }
-        //}
-
+      
         //private void CheckConnectivity()
         //{
         //    if (Connectivity.NetworkAccess == NetworkAccess.None)
