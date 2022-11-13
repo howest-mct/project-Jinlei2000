@@ -213,15 +213,91 @@ namespace KitsuApp.Repositories
         }
 
         // Get your favorite Animes
+        public static async Task<List<Anime>> GetFavoriteAnimesAsync()
+        {
+            string url = $"https://leijin.azurewebsites.net/api/favorites/anime";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    List<Anime> animes = JsonConvert.DeserializeObject<List<Anime>>(json);
+                    return animes;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Get your favorite Mangas
 
         // Post your favorite Anime
+        public static async Task PostFavoriteAnimeAsync(Anime anime)
+        {
+            string url = $"https://leijin.azurewebsites.net/api/favorites/anime";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = JsonConvert.SerializeObject(anime);
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        string errorMsg = $"Unsuccessful Post to url: {url}, object: {json}";
+                        throw new Exception(errorMsg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Post your favorite Manga
 
         // Put your favorite Anime
+        
 
         // Put your favorite Manga
+
+        // Delete your favorite Anime
+
+        // Delete your favorite Manga
+
+        // Get check if Anime or Manga is in favorites
+        public static async Task<bool> GetCheckFavNotExists(string type, string id)
+        {
+            if (type == "anime")
+            {
+                List<Anime> animes = await GetFavoriteAnimesAsync();
+                foreach (Anime anime in animes)
+                {
+                    if (anime.Id == id)
+                    {
+                        return true;
+                    }
+                }
+            }
+            //else if (type == "manga")
+            //{
+            //    List<Manga> mangas = await GetFavoriteMangasAsync();
+            //    foreach (Manga manga in mangas)
+            //    {
+            //        if (manga.Id == id)
+            //        {
+            //            return true;
+            //        }
+            //    }
+            //}
+            return false;
+        }
     }
 }

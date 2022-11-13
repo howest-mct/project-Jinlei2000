@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="KitsuApp.Views.AnimeOverviewFav">
+             x:Class="KitsuApp.Views.AnimeOverviewFav"
+             xmlns:local="clr-namespace:KitsuApp.MarkupExtensions">
 
     <!--#region Styling Component-->
     <ContentPage.Resources>
@@ -41,9 +42,16 @@
         <!--#region Your Favorite Anime-->
         <ScrollView Orientation="Vertical">
             <StackLayout>
-                <Label Text="Favorite Anime" FontSize="16" FontAttributes="Bold" Margin="10,5" TextColor="Black"/>
+                <Label Text="Favorite Anime" FontSize="16" FontFamily="InterSemiBold" TextColor="#0D0D0D" Margin="10,5"/>
 
-                <CollectionView SelectionMode="Single" x:Name="cvwYourFavorites" Margin="0,0,0,10">
+                <StackLayout x:Name="EmptyPage" Margin="20,50">
+                    <Label Text="Hmmm!" FontSize="24" FontFamily="InterBold" TextColor="#0D0D0D" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Text="You don't have any favorites animes" FontFamily="InterSemiBold" TextColor="#0D0D0D" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,0"/>
+                    <Label Text="Please add some favorite animes here " FontFamily="InterMedium" TextColor="#5D5D5D" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Image Source="{local:EmbeddedImage ResourceId=KitsuApp.Assets.nothing.jpg }"/>
+                </StackLayout>
+
+                <CollectionView SelectionMode="Single" x:Name="cvwYourFavorites" Margin="0,0,0,10"  SelectionChanged="GoToDetailPage">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" />
                     </CollectionView.ItemsLayout>
@@ -54,14 +62,9 @@
                                 <!--#region Change Selection color-->
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
-                                        <!-- <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>-->
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="#EBEEFD" />
+                                                <Setter Property="BackgroundColor" Value="White" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -91,6 +94,6 @@
             </StackLayout>
         </ScrollView>
         <!--#endregion-->
-        
+
     </ContentPage.Content>
 </ContentPage>

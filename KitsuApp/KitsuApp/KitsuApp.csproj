@@ -14,6 +14,7 @@
     <None Remove="Assets\home.png" />
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\noInternet.png" />
+    <None Remove="Assets\nothing.jpg" />
     <None Remove="Assets\star.png" />
     <None Remove="Fonts\InterBold.ttf" />
     <None Remove="Fonts\InterMedium.ttf" />
@@ -27,6 +28,7 @@
     <EmbeddedResource Include="Assets\logo.png" />
     <EmbeddedResource Include="Assets\home.png" />
     <EmbeddedResource Include="Assets\noInternet.png" />
+    <EmbeddedResource Include="Assets\nothing.jpg" />
     <EmbeddedResource Include="Assets\star.png" />
     <EmbeddedResource Include="Fonts\InterBold.ttf" />
     <EmbeddedResource Include="Fonts\InterMedium.ttf" />
