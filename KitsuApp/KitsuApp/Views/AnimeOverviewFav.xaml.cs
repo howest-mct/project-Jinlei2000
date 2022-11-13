@@ -19,6 +19,7 @@ namespace KitsuApp.Views
         {
             InitializeComponent();
             ShowFavAnimes();
+
         }
 
         private async Task ShowFavAnimes()
