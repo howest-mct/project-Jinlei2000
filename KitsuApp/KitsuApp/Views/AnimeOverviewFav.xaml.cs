@@ -50,5 +50,53 @@ namespace KitsuApp.Views
             // Reset the selected item
             cvwYourFavorites.SelectedItem = null;
         }
+
+        // Delete a favorite anime from the Favorites list
+        private async void DeleteAnime(object sender, EventArgs e)
+        {
+            Debug.WriteLine("DeleteAnime");
+
+            // Get the CommandParameter of the button
+            Anime anime = (Anime)((Button)sender).CommandParameter;
+            Debug.WriteLine(anime.Id);
+            if (anime != null)
+            {
+                Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxxx");
+                await KitsuRepository.DeleteFavoriteAnimeAsync(anime.Id);
+                await ShowFavAnimes();
+            }
+        }
+
+        // Update the list of favorites when the page appears
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    ShowFavAnimes();
+        //}
+
+        //Update the favName when the user changes it
+        private async void UpdateAnime(object sender, EventArgs e)
+        {
+            Debug.WriteLine("UpdateAnime");
+            // Get the CommandParameter of the button
+            Anime anime = (Anime)((Button)sender).CommandParameter;
+
+            string placeholder = anime.FavName;
+
+            // show alert with input
+            string result = await DisplayPromptAsync("Change favorite name", "Enter a new favorite name for this anime", "Change", "Cancel", placeholder, -1, Keyboard.Default);
+
+            if (result != "" && result != null && result != placeholder)
+            {
+                // update the favName
+                anime.FavName = result;
+
+                // Update the favName
+                await KitsuRepository.PutFavoriteAnimeAsync(anime);
+
+                // Update the list of favorites
+                await ShowFavAnimes();
+            };
+        }
     }
 }

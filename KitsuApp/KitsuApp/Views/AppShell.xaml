@@ -4,7 +4,7 @@
              x:Class="KitsuApp.Views.AppShell"
              xmlns:view="clr-namespace:KitsuApp.Views"
              xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
-             BackgroundColor="#6677F6">
+             BackgroundColor="#131949">
     
     <TabBar>
         <Tab Title="Home"

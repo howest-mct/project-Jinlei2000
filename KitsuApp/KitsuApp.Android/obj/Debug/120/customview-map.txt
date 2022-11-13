@@ -1,4 +1,6 @@
 @string/appbar_scrolling_view_behavior;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\layout\rootlayout.xml
+adaptive-icon;obj\Debug\120\res\mipmap-anydpi-v26\ic_launcher.xml
+adaptive-icon;obj\Debug\120\res\mipmap-anydpi-v26\ic_launcher_round.xml
 adaptive-icon;obj\Debug\120\res\mipmap-anydpi-v26\icon.xml
 adaptive-icon;obj\Debug\120\res\mipmap-anydpi-v26\icon_round.xml
 alpha;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\anim\enterfromleft.xml
@@ -11,10 +13,13 @@ androidx.coordinatorlayout.widget.CoordinatorLayout;C:\Users\jinle\Documents\Lab
 androidx.coordinatorlayout.widget.CoordinatorLayout;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\layout\shellcontent.xml
 attr;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\2\jl\res\values\attrs.xml
 attr;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\values\attrs.xml
+background;obj\Debug\120\res\mipmap-anydpi-v26\ic_launcher.xml
+background;obj\Debug\120\res\mipmap-anydpi-v26\ic_launcher_round.xml
 background;obj\Debug\120\res\mipmap-anydpi-v26\icon.xml
 background;obj\Debug\120\res\mipmap-anydpi-v26\icon_round.xml
 cache-path;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\56\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 color;obj\Debug\120\res\values\colors.xml
+color;obj\Debug\120\res\values\ic_launcher_background.xml
 com.google.android.material.appbar.AppBarLayout;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\layout\flyoutcontent.xml
 com.google.android.material.appbar.AppBarLayout;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\layout\rootlayout.xml
 com.google.android.material.appbar.AppBarLayout;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\layout\shellcontent.xml
@@ -26,6 +31,8 @@ declare-styleable;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\Kitsu
 declare-styleable;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\values\attrs.xml
 external-cache-path;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\56\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\56\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+foreground;obj\Debug\120\res\mipmap-anydpi-v26\ic_launcher.xml
+foreground;obj\Debug\120\res\mipmap-anydpi-v26\ic_launcher_round.xml
 foreground;obj\Debug\120\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\120\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\layout\bottomtablayout.xml
@@ -37,6 +44,7 @@ resources;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\Kits
 resources;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\values\strings.xml
 resources;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\values\styles.xml
 resources;obj\Debug\120\res\values\colors.xml
+resources;obj\Debug\120\res\values\ic_launcher_background.xml
 resources;obj\Debug\120\res\values\styles.xml
 set;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\anim\enterfromleft.xml
 set;C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp.Android\obj\Debug\120\lp\57\jl\res\anim\enterfromright.xml

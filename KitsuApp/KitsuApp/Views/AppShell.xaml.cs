@@ -19,7 +19,7 @@ namespace KitsuApp.Views
             Shell.SetTabBarTitleColor(this, Color.FromHex("#ffffff"));
 
             //change the color of the tab bar
-            Shell.SetTabBarBackgroundColor(this, Color.FromHex("#6677F6"));
+            Shell.SetTabBarBackgroundColor(this, Color.FromHex("#131949"));
 
             //change the color of the unselected tab
             Shell.SetUnselectedColor(this, Color.FromHex("#C5CCFB"));

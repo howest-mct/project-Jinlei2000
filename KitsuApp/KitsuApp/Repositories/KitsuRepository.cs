@@ -264,11 +264,57 @@ namespace KitsuApp.Repositories
         // Post your favorite Manga
 
         // Put your favorite Anime
-        
+        public static async Task PutFavoriteAnimeAsync(Anime anime)
+        {
+            string url = $"https://leijin.azurewebsites.net/api/favorites/anime/{anime.Id}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = JsonConvert.SerializeObject(anime);
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PutAsync(url, content);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        string errorMsg = $"Unsuccessful Put to url: {url}, object: {json}";
+                        throw new Exception(errorMsg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
 
         // Put your favorite Manga
 
         // Delete your favorite Anime
+        public static async Task DeleteFavoriteAnimeAsync(string animeId)
+        {
+            string url = $"https://leijin.azurewebsites.net/api/favorites/anime/{animeId}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.DeleteAsync(url);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        string errorMsg = $"Unsuccessful Delete to url: {url}";
+                        throw new Exception(errorMsg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Delete your favorite Manga
 

@@ -5,7 +5,7 @@
             xmlns:view="clr-namespace:KitsuApp.Views"
             xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
             Title="Gozzby"
-            BarBackgroundColor="#6677F6"
+            BarBackgroundColor="#131949"
             SelectedTabColor="White"
             UnselectedTabColor="#C5CCFB">
 

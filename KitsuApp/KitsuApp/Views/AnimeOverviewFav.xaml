@@ -81,8 +81,8 @@
                                     <Frame IsClippedToBounds="True" Padding="0" CornerRadius="16">
                                         <Image Source="{Binding AnimeInfo.PosterImage.Medium}"/>
                                     </Frame>
-                                    <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}"/>
-                                    <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}"/>
+                                    <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}" Clicked="DeleteAnime" CommandParameter="{Binding}"/>
+                                    <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}" Clicked="UpdateAnime" CommandParameter="{Binding}"/>
                                 </StackLayout>
                                 <Label Text="{Binding AnimeInfo.Name}" WidthRequest="142" HorizontalTextAlignment="Center" Grid.Row="2" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                             </Grid>
