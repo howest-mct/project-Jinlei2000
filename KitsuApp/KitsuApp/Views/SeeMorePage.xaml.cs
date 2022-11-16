@@ -2,6 +2,7 @@
 using KitsuApp.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace KitsuApp.Views
             }
         }
 
+        // Listen to the Clicked events of the CollectionView items and go to DetailPage
         private void GoToDetailPage(object sender, SelectionChangedEventArgs e)
         {
             Collection selectedAnime = (Collection)cvwSeeMore.SelectedItem;
@@ -43,6 +45,35 @@ namespace KitsuApp.Views
             }
             // Reset selected item
             cvwSeeMore.SelectedItem = null;
+        }
+
+        // Add anime to favorites if not already in favorites
+        private async void AddToFavorite(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Button Add_To_Favorite");
+            // Get the CommandParameter of the button
+            Anime anime = (Anime)((Button)sender).CommandParameter;
+
+            Debug.WriteLine("Anime: " + anime.Id);
+
+            bool Check = await KitsuRepository.GetCheckFavNotExists("anime", anime.Id);
+            if (Check == false)
+            {
+                anime.FavName = "Favorite anime";
+
+                // Add to favorite
+                await KitsuRepository.PostFavoriteAnimeAsync(anime);
+
+                if (anime != null)
+                {
+                    await Navigation.PushAsync(new AnimeOverviewFav());
+                }
+
+            }
+            else
+            {
+                await DisplayAlert("Info", "This anime is already in your favorites", "OK");
+            }
         }
     }
 }

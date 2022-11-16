@@ -107,7 +107,7 @@ namespace KitsuApp.Views
 
 
         // Add anime to favorites if not already in favorites
-        private async void Add_To_Favorite(object sender, EventArgs e)
+        private async void AddToFavorite(object sender, EventArgs e)
         {
             Debug.WriteLine("Button Add_To_Favorite");
             // Get the CommandParameter of the button

@@ -76,9 +76,9 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
-                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}" Aspect="AspectFill"/>
                                         </Frame>
-                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="Add_To_Favorite" CommandParameter="{Binding}"/>
+                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}"/>
                                     </StackLayout>
                                     <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
@@ -121,9 +121,9 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
-                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}" Aspect="AspectFill"/>
                                         </Frame>
-                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="Add_To_Favorite" CommandParameter="{Binding}" />
+                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}" />
                                     </StackLayout>
                                     <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
@@ -166,9 +166,9 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
-                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}" Aspect="AspectFill"/>
                                         </Frame>
-                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="Add_To_Favorite" CommandParameter="{Binding}" />
+                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}" />
                                     </StackLayout>
                                     <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
@@ -211,9 +211,9 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
-                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}" Aspect="AspectFill"/>
                                         </Frame>
-                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="Add_To_Favorite" CommandParameter="{Binding}"/>
+                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}"/>
                                     </StackLayout>
                                     <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
@@ -256,9 +256,9 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
-                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}" Aspect="AspectFill"/>
                                         </Frame>
-                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="Add_To_Favorite" CommandParameter="{Binding}" />
+                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}" />
                                     </StackLayout>
                                     <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
@@ -301,9 +301,9 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
-                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}" Aspect="AspectFill"/>
                                         </Frame>
-                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="Add_To_Favorite" CommandParameter="{Binding}" />
+                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}" />
                                     </StackLayout>
                                     <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
@@ -346,9 +346,9 @@
                                     </Grid.RowDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
-                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}"/>
+                                            <Image Source="{Binding AnimeInfo.PosterImage.Small}" Aspect="AspectFill"/>
                                         </Frame>
-                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="Add_To_Favorite" CommandParameter="{Binding}"/>
+                                        <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}"/>
                                     </StackLayout>
                                     <Label Text="{Binding AnimeInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>

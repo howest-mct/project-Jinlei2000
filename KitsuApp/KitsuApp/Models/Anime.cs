@@ -103,8 +103,10 @@ namespace KitsuApp.Models
                 }
                 else
                 {
-                    //round decimal to 2 decimal places
-                    return (float)Math.Round(float.Parse(AnimeInfo.AverageRating) / 10, 2);
+                    // Convert the string to a float
+                    float rating =  float.Parse(AnimeInfo.AverageRating, CultureInfo.InvariantCulture.NumberFormat);
+                    // Round to 2 decimal place and divide by 10 to get a rating out of 10
+                    return (float)Math.Round(rating / 10, 2);
                 }
             }
         }
@@ -199,7 +201,6 @@ namespace KitsuApp.Models
     public class PosterImage
     {
         [JsonProperty(PropertyName = "small", NullValueHandling = NullValueHandling.Ignore)]
-
         public string Small { get; set; }
 
         [JsonProperty(PropertyName = "medium", NullValueHandling = NullValueHandling.Ignore)]

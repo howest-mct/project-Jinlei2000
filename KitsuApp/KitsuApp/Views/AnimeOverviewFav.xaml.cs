@@ -22,6 +22,13 @@ namespace KitsuApp.Views
 
         }
 
+        // Update the list of favorites when the page appears
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ShowFavAnimes();
+        }
+
         private async Task ShowFavAnimes()
         {
             Debug.WriteLine("ShowFavAnimes");
@@ -67,13 +74,6 @@ namespace KitsuApp.Views
                 await ShowFavAnimes();
             }
         }
-
-        // Update the list of favorites when the page appears
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    ShowFavAnimes();
-        //}
 
         //Update the favName when the user changes it
         private async void UpdateAnime(object sender, EventArgs e)

@@ -79,7 +79,7 @@
                                 <Label Text="{Binding FavName}" WidthRequest="150" HorizontalTextAlignment="Center" VerticalOptions="End" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterSemiBold" TextColor="#0D0D0D"/>
                                 <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
                                     <Frame IsClippedToBounds="True" Padding="0" CornerRadius="16">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Medium}"/>
+                                        <Image Source="{Binding AnimeInfo.PosterImage.Medium}" Aspect="AspectFill"/>
                                     </Frame>
                                     <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}" Clicked="DeleteAnime" CommandParameter="{Binding}"/>
                                     <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}" Clicked="UpdateAnime" CommandParameter="{Binding}"/>

@@ -16,6 +16,8 @@
     <None Remove="Assets\noInternet.png" />
     <None Remove="Assets\nothing.jpg" />
     <None Remove="Assets\star.png" />
+    <None Remove="Assets\youtube.png" />
+    <None Remove="Assets\youtube2.png" />
     <None Remove="Fonts\InterBold.ttf" />
     <None Remove="Fonts\InterMedium.ttf" />
     <None Remove="Fonts\InterRegular.ttf" />
@@ -30,6 +32,8 @@
     <EmbeddedResource Include="Assets\noInternet.png" />
     <EmbeddedResource Include="Assets\nothing.jpg" />
     <EmbeddedResource Include="Assets\star.png" />
+    <EmbeddedResource Include="Assets\youtube.png" />
+    <EmbeddedResource Include="Assets\youtube2.png" />
     <EmbeddedResource Include="Fonts\InterBold.ttf" />
     <EmbeddedResource Include="Fonts\InterMedium.ttf" />
     <EmbeddedResource Include="Fonts\InterRegular.ttf" />
