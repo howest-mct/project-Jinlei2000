@@ -21,7 +21,7 @@ namespace KitsuApp
             //Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             //CheckConnectivity();
         }
-      
+
         //private void CheckConnectivity()
         //{
         //    if (Connectivity.NetworkAccess == NetworkAccess.None)

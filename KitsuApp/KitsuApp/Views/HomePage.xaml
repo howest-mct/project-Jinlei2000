@@ -3,7 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:view="clr-namespace:KitsuApp.Views"
             x:Class="KitsuApp.Views.HomePage" 
-            xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
+            xmlns:local="clr-namespace:KitsuApp.Services"
             Title="Gozzby"
             BarBackgroundColor="#131949"
             SelectedTabColor="White"

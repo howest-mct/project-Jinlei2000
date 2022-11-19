@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
+             xmlns:local="clr-namespace:KitsuApp.Services"
              x:Class="KitsuApp.Views.DetailPage">
 
     <!--#region Styling Component-->
@@ -52,7 +53,7 @@
                             <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
                                 <Image x:Name="imgPoster" Aspect="AspectFill"/>
                             </Frame>
-                            <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}"/>
+                            <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite"/>
                         </StackLayout>
                         <StackLayout Grid.Column="1" Margin="-20,0,0,0">
                             <FlexLayout>

@@ -57,28 +57,55 @@ namespace KitsuApp.Views
         {
             Debug.WriteLine("Button Add_To_Favorite");
             // Get the CommandParameter of the button
-            Anime anime = (Anime)((Button)sender).CommandParameter;
+            Collection collection = (Collection)((Button)sender).CommandParameter;
 
-            Debug.WriteLine("Anime: " + anime.Id);
-
-            bool Check = await KitsuRepository.GetCheckFavNotExists("anime", anime.Id);
-            if (Check == false)
+            if (collection.CollectionType == "anime")
             {
-                anime.FavName = "Favorite anime";
+                Anime anime = (Anime)collection;
 
-                // Add to favorite
-                await KitsuRepository.PostFavoriteAnimeAsync(anime);
-
-                if (anime != null)
+                bool Check = await KitsuRepository.GetCheckFavNotExists("anime", collection.Id);
+                if (Check == false)
                 {
-                    await Navigation.PushAsync(new AnimeOverviewFav());
-                }
+                    anime.FavName = "Favorite anime";
 
+                    // Add to favorite
+                    await KitsuRepository.PostFavoriteAnimeAsync(anime);
+
+                    if (anime != null)
+                    {
+                        await Navigation.PushAsync(new AnimeOverviewFav());
+                    }
+
+                }
+                else
+                {
+                    await DisplayAlert("Info", "This anime is already in your favorites", "OK");
+                }
             }
-            else
+            else if (collection.CollectionType == "manga")
             {
-                await DisplayAlert("Info", "This anime is already in your favorites", "OK");
+                //Manga manga = (Manga)collection;
+
+                //bool Check = await KitsuRepository.GetCheckFavNotExists("manga", collection.Id);
+                //if (Check == false)
+                //{
+                //    manga.FavName = "Favorite manga";
+
+                //    // Add to favorite
+                //    await KitsuRepository.PostFavoriteMangaAsync(manga);
+
+                //    if (manga != null)
+                //    {
+                //        await Navigation.PushAsync(new AnimeOverviewFav());
+                //    }
+
+                //}
+                //else
+                //{
+                //    await DisplayAlert("Info", "This anime is already in your favorites", "OK");
+                //}
             }
+
         }
     }
 }

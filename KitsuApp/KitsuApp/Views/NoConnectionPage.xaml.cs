@@ -16,6 +16,11 @@ namespace KitsuApp.Views
         public NoConnectionPage()
         {
             InitializeComponent();
+            // no app shell bottom bar
+            Shell.SetTabBarIsVisible(this, false);
+            // no app shell top bar
+            Shell.SetNavBarIsVisible(this, false);
+
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
         }
         void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
@@ -23,7 +28,8 @@ namespace KitsuApp.Views
             Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxConnectivity_ConnectivityChanged");
             if (Connectivity.NetworkAccess != NetworkAccess.None)
             {
-                Navigation.PushAsync(new MainPage());
+                // go to HomePage and remove all pages from stack
+                Navigation.PopToRootAsync();
             }
         }
     }

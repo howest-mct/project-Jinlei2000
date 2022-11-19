@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KitsuApp.Views.AppShell"
              xmlns:view="clr-namespace:KitsuApp.Views"
-             xmlns:local="clr-namespace:KitsuApp.MarkupExtensions"
+             xmlns:local="clr-namespace:KitsuApp.Services"
              BackgroundColor="#131949">
     
     <TabBar>

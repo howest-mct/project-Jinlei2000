@@ -37,29 +37,29 @@ namespace KitsuApp.Views
                 Debug.WriteLine("ShowDetail: " + anime.AnimeInfo.Name);
                 // Standard Info & image
                 lblName.Text = anime.AnimeInfo.Name;
-                lblRating.Text = anime.Rating.ToString();
+                lblRating.Text = anime.AnimeInfo.RatingProcent.ToString();
                 imgPoster.Source = anime.AnimeInfo.PosterImage.Medium;
-                lblTotalTime.Text = anime.TotalTime;
-                lblEpisodes.Text = anime.AnimeInfo.EpisodeCount == 0 || anime.AnimeInfo.EpisodeCount == 1 ? "N/A" : anime.AnimeInfo.EpisodeCount.ToString();
-                lblDuration.Text = anime.AnimeInfo.EpisodeLength == 0 || anime.AnimeInfo.EpisodeCount == 1 ? "N/A" : anime.AnimeInfo.EpisodeLength.ToString() + "m per ep";
+                lblTotalTime.Text = anime.AnimeInfo.TotalTime;
+                lblEpisodes.Text = anime.AnimeInfo.EpisodeCountString;
+                lblDuration.Text = anime.AnimeInfo.EpisodeLengthString;
                 lblType.Text = anime.AnimeInfo.Subtype;
-                lblStatus.Text = anime.AnimeInfo.Status.Substring(0, 1).ToUpper() + anime.AnimeInfo.Status.Substring(1);
-                lblAired.Text = anime.Aired;
-                lblSynopsis.Text = anime.AnimeInfo.Synopsis == null ? "No Description" : anime.AnimeInfo.Synopsis;
+                lblStatus.Text = anime.AnimeInfo.StatusString;
+                lblAired.Text = anime.AnimeInfo.AiredDate;
+                lblSynopsis.Text = anime.AnimeInfo.SynopsisText;
 
                 //More Info
-                lblSeason.Text = anime.Season;
-                lblHighestRatedRank.Text = anime.AnimeInfo.HighestRatedRank == null ? "#?" : $"#{anime.AnimeInfo.HighestRatedRank}";
-                lblPopularityRank.Text = anime.AnimeInfo.PopularityRank == null ? "#?" : $"#{anime.AnimeInfo.PopularityRank}";
-                lblMembers.Text = anime.AnimeInfo.Members == null ? "0" : anime.AnimeInfo.Members;
-                lblAgeRating.Text = anime.AgeRating;
+                lblSeason.Text = anime.AnimeInfo.Season;
+                lblHighestRatedRank.Text = anime.AnimeInfo.HighestRatedRankString;
+                lblPopularityRank.Text = anime.AnimeInfo.PopularityRankString;
+                lblMembers.Text = anime.AnimeInfo.MemberCountString;
+                lblAgeRating.Text = anime.AnimeInfo.AgeRatingString;
 
                 // Trailer
-                if (anime.TrailerLink == "N/A")
+                if (anime.AnimeInfo.TrailerLink == "N/A")
                 {
                     btnTrailer.IsVisible = false;
                 }
-                TrailerLink = anime.TrailerLink;
+                TrailerLink = anime.AnimeInfo.TrailerLink;
 
                 // Genres
                 List<Genre> genres = await KitsuRepository.GetGenresFromAnimeIDAsync(anime.Id);
@@ -73,8 +73,6 @@ namespace KitsuApp.Views
                 {
                     cvwGenre.ItemsSource = genres;
                 }
-
-
 
             }
             else if (CollectionContent.CollectionType == "manga")
@@ -94,7 +92,7 @@ namespace KitsuApp.Views
             if (CollectionContent.CollectionType == "anime")
             {
                 Anime anime = (Anime)CollectionContent;
-                degree = anime.Rating != 0 ? anime.Rating * (360 / 10) : 0;
+                degree = anime.AnimeInfo.RatingProcent != 0 ? anime.AnimeInfo.RatingProcent * (360 / 10) : 0;
             }
             else if (CollectionContent.CollectionType == "manga")
             {
@@ -163,6 +161,61 @@ namespace KitsuApp.Views
             {
                 Navigation.PushAsync(new FilteredByGenrePage(genre, "anime"));
             }
+        }
+
+        // Add anime to favorites if not already in favorites
+        private async void AddToFavorite(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Button Add_To_Favorite");
+
+            if (CollectionContent.CollectionType == "anime")
+            {
+                Anime anime = (Anime)CollectionContent;
+
+                bool Check = await KitsuRepository.GetCheckFavNotExists("anime", CollectionContent.Id);
+                if (Check == false)
+                {
+                    anime.FavName = "Favorite anime";
+
+                    // Add to favorite
+                    await KitsuRepository.PostFavoriteAnimeAsync(anime);
+
+                    if (anime != null)
+                    {
+                        await Navigation.PushAsync(new AnimeOverviewFav());
+                    }
+
+                }
+                else
+                {
+                    await DisplayAlert("Info", "This anime is already in your favorites", "OK");
+                }
+            }
+            else if (CollectionContent.CollectionType == "manga")
+            {
+                //Manga manga = (Manga)CollectionContent;
+
+                //bool Check = await KitsuRepository.GetCheckFavNotExists("manga", CollectionContent.Id);
+                //if (Check == false)
+                //{
+                //    manga.FavName = "Favorite manga";
+
+                //    // Add to favorite
+                //    await KitsuRepository.PostFavoriteMangaAsync(manga);
+
+                //    if (manga != null)
+                //    {
+                //        await Navigation.PushAsync(new AnimeOverviewFav());
+                //    }
+
+                //}
+                //else
+                //{
+                //    await DisplayAlert("Info", "This anime is already in your favorites", "OK");
+                //}
+            }
+
+           
         }
     }
 }

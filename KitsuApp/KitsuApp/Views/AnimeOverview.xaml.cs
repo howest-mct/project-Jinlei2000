@@ -1,5 +1,6 @@
 ﻿using KitsuApp.Models;
 using KitsuApp.Repositories;
+using KitsuApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,6 +19,9 @@ namespace KitsuApp.Views
         public AnimeOverview()
         {
             InitializeComponent();
+            // ConnectivityTest Class
+            new ConnectivityTest();
+
             SetGenres();
             ShowAnime();
         }
@@ -91,7 +95,7 @@ namespace KitsuApp.Views
             }
         }
 
-        // Listen to all the Clicked events of the CollectionView items and go to DetailPage
+        //Listen to all the Clicked events of the CollectionView items and go to DetailPage
         private void GoToDetailPage(object sender, EventArgs e)
         {
             Debug.WriteLine("GoToDetailPage");

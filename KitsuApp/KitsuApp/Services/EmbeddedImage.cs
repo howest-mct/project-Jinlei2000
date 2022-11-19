@@ -4,14 +4,14 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace KitsuApp.MarkupExtensions
+namespace KitsuApp.Services
 {
     public class EmbeddedImage : IMarkupExtension
     {
         public string ResourceId { get; set; }
         public object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (String.IsNullOrWhiteSpace(ResourceId)) return null;
+            if (string.IsNullOrWhiteSpace(ResourceId)) return null;
             return ImageSource.FromResource(ResourceId);
         }
     }
