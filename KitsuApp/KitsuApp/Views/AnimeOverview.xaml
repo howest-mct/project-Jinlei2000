@@ -34,15 +34,29 @@
                 <Setter Property="BorderColor" Value="#4056F4" />
                 <Setter Property="BorderWidth" Value="0.25" />
             </Style>
+            <Style x:Key="buttonRandomStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Background" Value="white"/>
+                <Setter Property="WidthRequest" Value="32"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="FontFamily" Value="MaterialIconsRegular"/>
+                <Setter Property="TextColor" Value="#4056F4"/>
+                <Setter Property="Margin" Value="0,0,10,0"/>
+                <Setter Property="FontSize" Value="24"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <!--#endregion-->
 
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
-            <StackLayout>
+            <StackLayout >
                 <Picker x:Name="PickerGenres" ItemDisplayBinding="{Binding GenreInfo.Name}" SelectedIndexChanged="PickerGenresSelectedIndexChanged"  Title="Looking for a specific genre?" Margin="10,0" FontSize="12" FontFamily="InterRegular"/>
-                <Label Text="Anime" FontSize="16" Margin="10,5" TextColor="#0D0D0D" FontFamily="InterBold"/>
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label Text="Anime" FontSize="16" Margin="10,5" TextColor="#0D0D0D" FontFamily="InterBold"/>
+                    <Button Text="&#xe043;" Style="{StaticResource buttonRandomStyle}" Clicked="BtnRandomAnime"/>
+                </FlexLayout>
 
                 <!--#region Trending now-->
                 <FlexLayout>

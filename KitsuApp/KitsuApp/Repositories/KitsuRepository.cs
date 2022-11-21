@@ -96,6 +96,96 @@ namespace KitsuApp.Repositories
             }
         }
 
+        // Get random Anime by ID
+        public static async Task<Anime> GetRandomAnimeAsync(string type)
+        {
+            // Get Highest Anime Id
+            string highestId = await GetHighestAsyncId("anime");
+            // Get random number between 1 and highest id
+            Random rnd = new Random();
+            int randomId = rnd.Next(1, Convert.ToInt32(highestId));
+
+            string url = $"{_BASEURL}/{type}/{randomId}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    //object deserializeren naar JObject (< newtonsoft)
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    //Find token "data" in JObject
+                    JToken data = fullObject.SelectToken("data");
+                    //Convert JToken to Anime
+                    Anime anime = data.ToObject<Anime>();
+                    return anime;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    if (ex.Message == "Response status code does not indicate success: 404 (Not Found).") { return null; }
+                    throw ex;
+                }
+            }
+        }
+
+        // Get random Manga by ID
+        public static async Task<Manga> GetRandomMangaAsync(string type)
+        {
+            // Get Highest Manga Id
+            string highestId = await GetHighestAsyncId("manga");
+            // Get random number between 1 and highest id
+            Random rnd = new Random();
+            int randomId = rnd.Next(1, Convert.ToInt32(highestId));
+
+            string url = $"{_BASEURL}/{type}/{randomId}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    //object deserializeren naar JObject (< newtonsoft)
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    //Find token "data" in JObject
+                    JToken data = fullObject.SelectToken("data");
+                    //Convert JToken to Manga
+                    Manga manga = data.ToObject<Manga>();
+                    return manga;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    if (ex.Message == "Response status code does not indicate success: 404 (Not Found).") { return null; }
+                    throw ex;
+                }
+            }
+        }
+
+        // Get Anime or Manga highest id
+        public static async Task<string> GetHighestAsyncId(string type)
+        {
+            string url = $"{_BASEURL}/{type}?page[limit]=1&sort=-id";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    //object deserializeren naar JObject (< newtonsoft)
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    // Highest id
+                    string id = fullObject.SelectToken("data[0].id").ToString();
+                    return id;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
         // Get all genres
         public static async Task<List<Genre>> GetGenresAsync()
         {
@@ -288,7 +378,6 @@ namespace KitsuApp.Repositories
                 }
             }
         }
-
 
         // Put your favorite Manga
 

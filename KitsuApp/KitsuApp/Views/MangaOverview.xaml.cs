@@ -139,5 +139,19 @@ namespace KitsuApp.Views
                 await DisplayAlert("Info", "This manga is already in your favorites", "OK");
             }
         }
+
+        // Get random anime and go to DetailPage
+        private async void BtnRandomAnime(object sender, EventArgs e)
+        {
+            Debug.WriteLine("BtnRandomAnime");
+
+            Anime anime = await KitsuRepository.GetRandomAnimeAsync("anime");
+            // Loop until anime is not null
+            while (anime == null)
+            {
+                anime = await KitsuRepository.GetRandomAnimeAsync("anime");
+            }
+            await Navigation.PushAsync(new DetailPage(anime));
+        }
     }
 }
