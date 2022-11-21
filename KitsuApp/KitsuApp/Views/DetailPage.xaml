@@ -59,20 +59,20 @@
                             <FlexLayout>
                                 <Label x:Name="lblName" WidthRequest="125" VerticalOptions="Start" HorizontalOptions="Start" FontSize="14" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterSemiBold" TextColor="#434343"/>
                                 <StackLayout Margin="3,0,0,0">
-                                    <skia:SKCanvasView x:Name="canvasView" PaintSurface="canvasView_PaintSurface"/>
+                                    <skia:SKCanvasView x:Name="canvasView" PaintSurface="CanvasViewPaintSurface"/>
                                     <Label x:Name="lblRating" Text="8.68"  Margin="0,-35,0,0" HorizontalOptions="Center"  FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
                                 </StackLayout>
                             </FlexLayout>
-                            <Label Text="TOTAL TIME" Margin="0,5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                            <Label x:Name="lblTotalTimeText" Text="TOTAL TIME" Margin="0,5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
                             <Label x:Name="lblTotalTime" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
 
                             <FlexLayout Margin="0,8,0,0">
                                 <StackLayout Margin="0,0,30,0">
-                                    <Label Text="EPISODES" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                    <Label x:Name="lblEpisodesText" Text="EPISODES" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
                                     <Label x:Name="lblEpisodes" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
                                 </StackLayout>
                                 <StackLayout>
-                                    <Label Text="DURATION" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
+                                    <Label x:Name="lblDurationText"  Text="DURATION" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
                                     <Label x:Name="lblDuration" Margin="0,-5,0,0" FontSize="10" FontFamily="InterSemiBold" TextColor="#434343"/>
                                 </StackLayout>
                             </FlexLayout>
@@ -94,7 +94,7 @@
                 </Frame>
                 <Frame HasShadow="False" Margin="0,-10,0,50" Padding="20,0">
                     <StackLayout>
-                        <Button x:Name="btnTrailer" Text="Watch Trailer" ImageSource="{local:EmbeddedImage ResourceId=KitsuApp.Assets.youtube.png}" Clicked="Button_Trailer_Clicked" />
+                        <Button x:Name="btnTrailer" Text="Watch Trailer" ImageSource="{local:EmbeddedImage ResourceId=KitsuApp.Assets.youtube.png}" Clicked="BtnTrailerClicked" />
                         <Label Text="Synopsis" FontSize="14" FontFamily="InterSemiBold" TextColor="#434343"/>
                         <Label x:Name="lblSynopsis" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
 
@@ -105,7 +105,7 @@
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Clicked="btnGenre_Clicked" Text="{Binding GenreInfo.Name}" Style="{StaticResource buttonGenreStyle}"/>
+                                    <Button Clicked="BtnGenreClicked" Text="{Binding GenreInfo.Name}" Style="{StaticResource buttonGenreStyle}"/>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>

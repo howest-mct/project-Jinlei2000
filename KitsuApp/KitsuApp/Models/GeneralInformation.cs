@@ -68,7 +68,6 @@ namespace KitsuApp.Models
                 return $"{start} - {end}";
             }
         }
-
         public string AgeRatingString
         {
             get
@@ -84,7 +83,6 @@ namespace KitsuApp.Models
                 return "N/A";
             }
         }
-
         public float RatingProcent
         {
             get
@@ -102,7 +100,6 @@ namespace KitsuApp.Models
                 }
             }
         }
-
         public string Season
         {
             get
@@ -118,7 +115,6 @@ namespace KitsuApp.Models
                 return $"{season} {date.Year}";
             }
         }
-
         public string StatusString
         {
             get
@@ -126,7 +122,6 @@ namespace KitsuApp.Models
                 return Status.Substring(0, 1).ToUpper() + Status.Substring(1);
             }
         }
-
         public string SynopsisText
         {
             get
@@ -138,7 +133,6 @@ namespace KitsuApp.Models
                 return Synopsis;
             }
         }
-
         public string HighestRatedRankString
         {
             get
@@ -172,8 +166,6 @@ namespace KitsuApp.Models
                 return $"{Members}";
             }
         }
-
-
 
     }
 

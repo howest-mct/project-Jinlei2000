@@ -35,6 +35,7 @@ namespace KitsuApp.Views
             {
                 Anime anime = (Anime)CollectionContent;
                 Debug.WriteLine("ShowDetail: " + anime.AnimeInfo.Name);
+
                 // Standard Info & image
                 lblName.Text = anime.AnimeInfo.Name;
                 lblRating.Text = anime.AnimeInfo.RatingProcent.ToString();
@@ -53,7 +54,7 @@ namespace KitsuApp.Views
                 lblPopularityRank.Text = anime.AnimeInfo.PopularityRankString;
                 lblMembers.Text = anime.AnimeInfo.MemberCountString;
                 lblAgeRating.Text = anime.AnimeInfo.AgeRatingString;
-
+                
                 // Trailer
                 if (anime.AnimeInfo.TrailerLink == "N/A")
                 {
@@ -80,13 +81,54 @@ namespace KitsuApp.Views
                 Manga manga = (Manga)CollectionContent;
                 Debug.WriteLine("ShowDetail: " + manga.MangaInfo.Slug);
 
+
+                // Standard Info & image
+                lblName.Text = manga.MangaInfo.Name;
+                lblRating.Text = manga.MangaInfo.RatingProcent.ToString();
+                imgPoster.Source = manga.MangaInfo.PosterImage.Medium;
+                
+                lblTotalTimeText.Text = "TOTAL CHAPTERS";
+                lblTotalTime.Text = manga.MangaInfo.TotalPages;
+
+                lblEpisodesText.Text = "VOLUME";
+                lblEpisodes.Text = manga.MangaInfo.VolumeCountString;
+
+                lblDurationText.Text = "CHAPTER";
+                lblDuration.Text = manga.MangaInfo.ChapterCountString;
+
+                lblType.Text = manga.MangaInfo.Subtype;
+                lblStatus.Text = manga.MangaInfo.StatusString;
+                lblAired.Text = manga.MangaInfo.AiredDate;
+                lblSynopsis.Text = manga.MangaInfo.SynopsisText;
+
+                //More Info
+                lblSeason.Text = manga.MangaInfo.Season;
+                lblHighestRatedRank.Text = manga.MangaInfo.HighestRatedRankString;
+                lblPopularityRank.Text = manga.MangaInfo.PopularityRankString;
+                lblMembers.Text = manga.MangaInfo.MemberCountString;
+                lblAgeRating.Text = manga.MangaInfo.AgeRatingString;
+
+                // Trailer
                 btnTrailer.IsVisible = false;
+                
+                // Genres
+                List<Genre> genres = await KitsuRepository.GetGenresFromMangaIDAsync(manga.Id);
+                Debug.WriteLine("Genres: " + genres.Count);
+                if (genres.Count == 0)
+                {
+                    cvwGenre.IsVisible = false;
+                    lblGenre.IsVisible = false;
+                }
+                else
+                {
+                    cvwGenre.ItemsSource = genres;
+                }
 
             }
         }
 
         // Draw the progress circle of the rating
-        private void canvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        private void CanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             float degree = 0;
             if (CollectionContent.CollectionType == "anime")
@@ -97,7 +139,7 @@ namespace KitsuApp.Views
             else if (CollectionContent.CollectionType == "manga")
             {
                 Manga manga = (Manga)CollectionContent;
-                degree = manga.Rating != 0 ? manga.Rating * (360 / 10) : 0;
+                degree = manga.MangaInfo.RatingProcent != 0 ? manga.MangaInfo.RatingProcent * (360 / 10) : 0;
             }
 
             SKSurface surface = e.Surface;
@@ -108,7 +150,7 @@ namespace KitsuApp.Views
             // Set transfroms
             canvas.Translate(e.Info.Width / 2, e.Info.Height / 2);
             canvas.Scale(e.Info.Width / 200f);
-
+            
             // background color of the circle
             SKPaint skPaintGray = new SKPaint
             {
@@ -146,14 +188,14 @@ namespace KitsuApp.Views
         }
 
         // Open trailer link on browser
-        private void Button_Trailer_Clicked(object sender, EventArgs e)
+        private void BtnTrailerClicked(object sender, EventArgs e)
         {
             Uri uri = new Uri(TrailerLink);
             Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
 
         // Go to the FilteredByGenrePage
-        private void btnGenre_Clicked(object sender, EventArgs e)
+        private void BtnGenreClicked(object sender, EventArgs e)
         {
             Genre genre = (Genre)((Button)sender).BindingContext;
             //Debug.WriteLine("Genre: " + genre.GenreInfo.Name) ;

@@ -38,10 +38,10 @@ namespace KitsuApp.Views
         // Listen to the Clicked events of the CollectionView items and go to DetailPage
         private void GoToDetailPage(object sender, SelectionChangedEventArgs e)
         {
-            Collection selectedAnime = (Collection)cvwSeeMore.SelectedItem;
-            if (selectedAnime != null)
+            Collection selected = (Collection)cvwSeeMore.SelectedItem;
+            if (selected != null)
             {
-                Navigation.PushAsync(new DetailPage(selectedAnime));
+                Navigation.PushAsync(new DetailPage(selected));
             }
             // Reset selected item
             cvwSeeMore.SelectedItem = null;

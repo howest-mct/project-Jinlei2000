@@ -56,11 +56,11 @@
                                     <!--#endregion-->
                                     <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center" Margin="0,15,0,0">
                                         <Frame IsClippedToBounds="True" Padding="0" CornerRadius="16">
-                                        <Image Source="{Binding AnimeInfo.PosterImage.Medium}" Aspect="AspectFill"/>
+                                        <Image Source="{Binding PosterImageMedium}" Aspect="AspectFill"/>
                                         </Frame>
                                     <Button Text="&#xe83a;" Style="{StaticResource buttonAddFavoStyle}" Clicked="AddToFavorite" CommandParameter="{Binding}"/>
                                     </StackLayout>
-                                    <Label Text="{Binding AnimeInfo.Name}" WidthRequest="142" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                    <Label Text="{Binding Name}" WidthRequest="142" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
                                 </Grid>
 
                         </DataTemplate>

@@ -7,8 +7,7 @@
             Title="Gozzby"
             BarBackgroundColor="#131949"
             SelectedTabColor="White"
-            UnselectedTabColor="#C5CCFB"
-            >
+            UnselectedTabColor="#C5CCFB">
 
     <TabbedPage.ToolbarItems>
         <ToolbarItem Text="Gozzby" Icon="{local:EmbeddedImage ResourceId=KitsuApp.Assets.logo.png }" Order="Primary" Priority="0"/>

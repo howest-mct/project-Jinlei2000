@@ -18,6 +18,9 @@ namespace KitsuApp.Models
 
         public override string CollectionType => "anime";
 
+        public string Name => AnimeInfo.Name;
+
+        public string PosterImageMedium => AnimeInfo.PosterImage.Medium;
     }
 
     public class AnimeInformation : GeneralInformation
@@ -57,7 +60,6 @@ namespace KitsuApp.Models
                 return $"{hours}h {minutes}m";
             }
         }
-
         public string TrailerLink
         {
             get
@@ -72,7 +74,6 @@ namespace KitsuApp.Models
                 }
             }
         }
-
         public string EpisodeCountString
         {
             get
@@ -87,7 +88,6 @@ namespace KitsuApp.Models
                 }
             }
         }
-
         public string EpisodeLengthString
         {
             get
@@ -109,7 +109,6 @@ namespace KitsuApp.Models
                 }
             }
         }
-
     }
 
 }

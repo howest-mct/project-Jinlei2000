@@ -68,7 +68,7 @@ namespace KitsuApp.Repositories
             else if (type == "popular") { extra = "&sort=popularityRank"; }
             else if (type == "updated") { extra = "&sort=-updatedAt"; }
             else if (type == "favorite") { extra = "&sort=-favoritesCount"; }
-            else if (type == "movie") { extra = "&sort=popularityRank&filter[subtype]=movie"; }
+            else if (type == "manhua") { extra = "&sort=popularityRank&filter[subtype]=manhua"; }
             else if (type == "upcoming") { extra = "&filter[status]=upcoming"; }
 
             string url = $"{_BASEURL}/manga?page[limit]={amount}{extra}";

@@ -47,7 +47,7 @@ namespace KitsuApp.Views
         }
 
         // Picker selected genre & go to FilteredByGenreOverview
-        private void PickerGenres_SelectedIndexChanged(object sender, EventArgs e)
+        private void PickerGenresSelectedIndexChanged(object sender, EventArgs e)
         {
             Debug.WriteLine("Picker selected genre");
             Genre selectedGenre = (Genre)PickerGenres.SelectedItem;

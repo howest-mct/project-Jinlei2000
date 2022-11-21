@@ -1,5 +1,6 @@
 ﻿using KitsuApp.Models;
 using KitsuApp.Repositories;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,11 +20,11 @@ namespace KitsuApp.Views
         public FilteredByGenrePage(Genre genre, string type)
         {
             InitializeComponent();
-            Debug.WriteLine($"xxxxxxxxxxxxxxxxxxxxxxxxxx{type}");
             this.GenreContent = genre;
             ShowByGenre(type);
         }
 
+        // Show Anime or Manga by filter
         private async Task ShowByGenre(string type)
         {
             // Change Title to genre name
@@ -33,7 +34,9 @@ namespace KitsuApp.Views
             {
                 // Get all anime from genre
                 cvwSelectedGenre.ItemsSource = await KitsuRepository.GetAnimesFromGenreAsync(GenreContent.GenreInfo.Slug);
-            }else if (type == "manga")
+                
+            }
+            else if (type == "manga")
             {
                 // Get all manga from genre
                 cvwSelectedGenre.ItemsSource = await KitsuRepository.GetMangasFromGenreAsync(GenreContent.GenreInfo.Slug);
@@ -43,10 +46,10 @@ namespace KitsuApp.Views
         // Listen to all the Clicked events of the CollectionView items and go to DetailPage
         private void GoToDetailPage(object sender, SelectionChangedEventArgs e)
         {
-            Collection selectedAnime = (Collection)cvwSelectedGenre.SelectedItem;
-            if (selectedAnime != null)
+            Collection selected = (Collection)cvwSelectedGenre.SelectedItem;
+            if (selected != null)
             {
-                Navigation.PushAsync(new DetailPage(selectedAnime));
+                Navigation.PushAsync(new DetailPage(selected));
             }
             // Reset selected item
             cvwSelectedGenre.SelectedItem = null;

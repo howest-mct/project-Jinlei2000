@@ -41,7 +41,7 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout>
-                <Picker x:Name="PickerGenres" ItemDisplayBinding="{Binding GenreInfo.Name}" SelectedIndexChanged="PickerGenres_SelectedIndexChanged"  Title="Looking for a specific genre?" Margin="10,0" FontSize="12" FontFamily="InterRegular"/>
+                <Picker x:Name="PickerGenres" ItemDisplayBinding="{Binding GenreInfo.Name}" SelectedIndexChanged="PickerGenresSelectedIndexChanged"  Title="Looking for a specific genre?" Margin="10,0" FontSize="12" FontFamily="InterRegular"/>
                 <Label Text="Anime" FontSize="16" Margin="10,5" TextColor="#0D0D0D" FontFamily="InterBold"/>
 
                 <!--#region Trending now-->
