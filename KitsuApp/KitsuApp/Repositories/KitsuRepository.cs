@@ -346,6 +346,52 @@ namespace KitsuApp.Repositories
             }
         }
 
+        // Search Anime
+        public static async Task<List<Anime>> SearchAnimeAsync(string search)
+        {
+            string url = $"{_BASEURL}/anime?page[limit]=10&filter[text]={search}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    JToken data = fullObject.SelectToken("data");
+                    List<Anime> animes = data.ToObject<List<Anime>>();
+                    return animes;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
+        // Search Manga
+        public static async Task<List<Manga>> SearchMangaAsync(string search)
+        {
+            string url = $"{_BASEURL}/manga?page[limit]=10&filter[text]={search}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    JToken data = fullObject.SelectToken("data");
+                    List<Manga> mangas = data.ToObject<List<Manga>>();
+                    return mangas;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
         // Get your favorite Animes
         public static async Task<List<Anime>> GetFavoriteAnimesAsync()
         {
@@ -396,6 +442,10 @@ namespace KitsuApp.Repositories
         }
 
         // Post your favorite Manga
+        public static async Task PostFavoriteMangaAsync(Manga manga)
+        {
+           
+        }
 
         // Put your favorite Anime
         public static async Task PutFavoriteAnimeAsync(Anime anime)

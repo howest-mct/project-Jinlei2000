@@ -14,8 +14,9 @@
     <None Remove="Assets\home.png" />
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\nothing.jpg" />
-    <None Remove="Assets\nowifi.jpg" />
+    <None Remove="Assets\noWifi.png" />
     <None Remove="Assets\search.png" />
+    <None Remove="Assets\searchImg.png" />
     <None Remove="Assets\star.png" />
     <None Remove="Assets\youtube.png" />
     <None Remove="Fonts\InterBold.ttf" />
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\nowifi.png" />
     <EmbeddedResource Include="Assets\search.png" />
   </ItemGroup>
 
@@ -34,7 +36,7 @@
     <EmbeddedResource Include="Assets\logo.png" />
     <EmbeddedResource Include="Assets\home.png" />
     <EmbeddedResource Include="Assets\nothing.jpg" />
-    <EmbeddedResource Include="Assets\nowifi.jpg" />
+    <EmbeddedResource Include="Assets\searchImg.png" />
     <EmbeddedResource Include="Assets\star.png" />
     <EmbeddedResource Include="Assets\youtube.png" />
     <EmbeddedResource Include="Fonts\InterBold.ttf" />

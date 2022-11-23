@@ -8,7 +8,7 @@
         <StackLayout Margin="20,0" VerticalOptions="Center" HorizontalOptions="Center">
             <Label Text="No Connection" FontSize="24" FontFamily="InterBold" TextColor="#0D0D0D" HorizontalOptions="Start" />
             <Label Text="Please check your internet connection." FontFamily="InterMedium" TextColor="#5D5D5D" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Image Source="{local:EmbeddedImage ResourceId=KitsuApp.Assets.nowifi.jpg }" Aspect="AspectFit" Margin="50"/>
+            <Image Source="{local:EmbeddedImage ResourceId=KitsuApp.Assets.nowifi.png }" Aspect="AspectFit" Margin="50"/>
         </StackLayout>
 
     </ContentPage.Content>
