@@ -75,6 +75,17 @@ namespace KitsuApp.Views
                     cvwGenre.ItemsSource = genres;
                 }
 
+                // Characters
+                List<Character> characters = await KitsuRepository.GetCharactersFromAnimeOrMangaIDAsync("anime",anime.Id);
+                if (characters.Count == 0) {
+                    flexCharacters.IsVisible = false;
+                    cvwCharacters.IsVisible = false;
+                }
+                else
+                {
+                    cvwCharacters.ItemsSource = characters;
+                }
+
             }
             else if (CollectionContent.CollectionType == "manga")
             {
@@ -122,6 +133,18 @@ namespace KitsuApp.Views
                 else
                 {
                     cvwGenre.ItemsSource = genres;
+                }
+
+                // Characters
+                List<Character> characters = await KitsuRepository.GetCharactersFromAnimeOrMangaIDAsync("manga", manga.Id);
+                if (characters.Count == 0)
+                {
+                    flexCharacters.IsVisible = false;
+                    cvwCharacters.IsVisible = false;
+                }
+                else
+                {
+                    cvwCharacters.ItemsSource = characters;
                 }
 
             }
@@ -190,8 +213,15 @@ namespace KitsuApp.Views
         // Open trailer link on browser
         private void BtnTrailerClicked(object sender, EventArgs e)
         {
-            Uri uri = new Uri(TrailerLink);
-            Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            try
+            {
+                Uri uri = new Uri(TrailerLink);
+                Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                // An unexpected error occured. No browser may be installed on the device.
+            }
         }
 
         // Go to the FilteredByGenrePage

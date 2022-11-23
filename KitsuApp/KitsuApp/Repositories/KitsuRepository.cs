@@ -16,6 +16,8 @@ namespace KitsuApp.Repositories
     public static class KitsuRepository
     {
         private const string _BASEURL = "https://kitsu.io/api/edge";
+
+        // HTTPClient 
         private static HttpClient GetHttpClient()
         {
             HttpClient client = new HttpClient();
@@ -293,6 +295,48 @@ namespace KitsuApp.Repositories
                     JToken data = fullObject.SelectToken("data");
                     List<Genre> genres = data.ToObject<List<Genre>>();
                     return genres;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
+        // Get characters from Anime or Manga ID
+        public static async Task<List<Character>> GetCharactersFromAnimeOrMangaIDAsync(string type, string animeId)
+        {
+            string url = $"{_BASEURL}/{type}/{animeId}/characters";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+
+                    JToken data = fullObject.SelectToken("data");
+
+                    List<Character> characters = new List<Character>();
+                    foreach (JToken item in data)
+                    {
+                        string characterId = item.SelectToken("id").ToString();
+                        Debug.WriteLine(characterId);
+                        string characterUrl = $"{_BASEURL}/media-characters/{characterId}/character";
+                        string characterJson = await client.GetStringAsync(characterUrl);
+                        JObject characterFullObject = JsonConvert.DeserializeObject<JObject>(characterJson);
+                        JToken characterData = characterFullObject.SelectToken("data");
+                        Character character = characterData.ToObject<Character>();
+                        if (character.CharacterInfo.Image != null)
+                        {
+                            if (character.CharacterInfo.Image.Original != null)
+                            {
+                                characters.Add(character);
+                            }
+                        }
+                    }
+                    return characters;
                 }
                 catch (Exception ex)
                 {

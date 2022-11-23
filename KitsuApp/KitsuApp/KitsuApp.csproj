@@ -15,6 +15,7 @@
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\nothing.jpg" />
     <None Remove="Assets\nowifi.jpg" />
+    <None Remove="Assets\search.png" />
     <None Remove="Assets\star.png" />
     <None Remove="Assets\youtube.png" />
     <None Remove="Fonts\InterBold.ttf" />
@@ -23,6 +24,10 @@
     <None Remove="Fonts\InterSemiBold.ttf" />
     <None Remove="Fonts\MaterialIconsRegular.ttf" />
     <None Remove="Fonts\MaterialIconsTwoToneRegular.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\search.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +79,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MangaOverviewFav.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SearchPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SeeMorePage.xaml">

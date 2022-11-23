@@ -40,6 +40,7 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout>
+                <!--#region Header-->
                 <Frame HeightRequest="200" HasShadow="False">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -92,6 +93,9 @@
                         </StackLayout>
                     </Grid>
                 </Frame>
+                <!--#endregion-->
+
+                <!--#region Synopsis, Genre-->
                 <Frame HasShadow="False" Margin="0,-10,0,50" Padding="20,0">
                     <StackLayout>
                         <Button x:Name="btnTrailer" Text="Watch Trailer" ImageSource="{local:EmbeddedImage ResourceId=KitsuApp.Assets.youtube.png}" Clicked="BtnTrailerClicked" />
@@ -135,6 +139,50 @@
 
                     </StackLayout>
                 </Frame>
+                <!--#endregion-->
+
+                <!--#region Characters -->
+                <FlexLayout x:Name="flexCharacters" Margin="10,-30,0,0">
+                    <Label Text="Characters" FontSize="14" Margin="10,0" FontFamily="InterSemiBold" TextColor="#0D0D0D"></Label>
+                </FlexLayout>
+
+                <CollectionView SelectionMode="Single" x:Name="cvwCharacters" HeightRequest="190"  Margin="10,0,0,10">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Frame Padding="10,5,5,5" Margin="5,0,0,0" BackgroundColor="Transparent" WidthRequest="95">
+                                <!--#region Change Selection color-->
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <!--#endregion-->
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                        <Frame IsClippedToBounds="True" Padding="0" CornerRadius="12">
+                                            <Image Source="{Binding CharacterInfo.Image.Original}" Aspect="AspectFill"/>
+                                        </Frame>
+                                    </StackLayout>
+                                    <Label Text="{Binding CharacterInfo.Name}" HorizontalTextAlignment="Center" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                                </Grid>
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--#endregion-->
 
             </StackLayout>
         </ScrollView>
