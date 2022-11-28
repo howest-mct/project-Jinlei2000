@@ -19,9 +19,14 @@ namespace KitsuApp.Views
         public AnimeOverview()
         {
             InitializeComponent();
+        }
+
+        // OnAppearing
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             // ConnectivityTest Class
             new ConnectivityTest();
-
             SetGenres();
             ShowAnime();
         }

@@ -14,6 +14,7 @@ using Xamarin.Forms.Xaml;
 using System.Xml.Linq;
 using Xamarin.Essentials;
 using KitsuApp.Repositories;
+using KitsuApp.Services;
 
 namespace KitsuApp.Views
 {
@@ -29,6 +30,14 @@ namespace KitsuApp.Views
             ShowDetail();
         }
 
+        // OnAppearing
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            // ConnectivityTest Class
+            new ConnectivityTest();
+        }
+        
         private async Task ShowDetail()
         {
             if (CollectionContent.CollectionType == "anime")
@@ -84,6 +93,18 @@ namespace KitsuApp.Views
                 else
                 {
                     cvwCharacters.ItemsSource = characters;
+                }
+
+                // Episodes
+                List<Episode> episodes = await KitsuRepository.GetEpisodesFromAnimeIDAsync(anime.Id);
+                if (episodes.Count == 0)
+                {
+                    cvwEpisodes.IsVisible = false;
+                    lblEpisodes.IsVisible = false;
+                }
+                else
+                {
+                    cvwEpisodes.ItemsSource = episodes;
                 }
 
             }
@@ -146,6 +167,10 @@ namespace KitsuApp.Views
                 {
                     cvwCharacters.ItemsSource = characters;
                 }
+
+                // Episodes
+                cvwEpisodes.IsVisible = false;
+                lblEpisodes.IsVisible = false;
 
             }
         }
@@ -220,6 +245,7 @@ namespace KitsuApp.Views
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 // An unexpected error occured. No browser may be installed on the device.
             }
         }
@@ -228,10 +254,16 @@ namespace KitsuApp.Views
         private void BtnGenreClicked(object sender, EventArgs e)
         {
             Genre genre = (Genre)((Button)sender).BindingContext;
-            //Debug.WriteLine("Genre: " + genre.GenreInfo.Name) ;
             if (genre != null)
             {
-                Navigation.PushAsync(new FilteredByGenrePage(genre, "anime"));
+                if(CollectionContent.CollectionType == "anime")
+                {
+                    Navigation.PushAsync(new FilteredByGenrePage(genre, "anime"));
+                }
+                else
+                {
+                    Navigation.PushAsync(new FilteredByGenrePage(genre, "manga"));
+                }
             }
         }
 
@@ -265,26 +297,25 @@ namespace KitsuApp.Views
             }
             else if (CollectionContent.CollectionType == "manga")
             {
-                //Manga manga = (Manga)CollectionContent;
+                Manga manga = (Manga)CollectionContent;
 
-                //bool Check = await KitsuRepository.GetCheckFavNotExists("manga", CollectionContent.Id);
-                //if (Check == false)
-                //{
-                //    manga.FavName = "Favorite manga";
+                bool Check = await KitsuRepository.GetCheckFavNotExists("manga", CollectionContent.Id);
+                if (Check == false)
+                {
+                    manga.FavName = "Favorite manga";
 
-                //    // Add to favorite
-                //    await KitsuRepository.PostFavoriteMangaAsync(manga);
+                    // Add to favorite
+                    await KitsuRepository.PostFavoriteMangaAsync(manga);
 
-                //    if (manga != null)
-                //    {
-                //        await Navigation.PushAsync(new AnimeOverviewFav());
-                //    }
-
-                //}
-                //else
-                //{
-                //    await DisplayAlert("Info", "This anime is already in your favorites", "OK");
-                //}
+                    if (manga != null)
+                    {
+                        await Navigation.PushAsync(new MangaOverviewFav());
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Info", "This manga is already in your favorites", "OK");
+                }
             }
 
            

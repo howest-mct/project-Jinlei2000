@@ -1,4 +1,5 @@
-﻿using KitsuApp.Views;
+﻿using KitsuApp.Models;
+using KitsuApp.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,6 +21,8 @@ namespace KitsuApp
         public App()
         {
             InitializeComponent();
+            // Debug Device Info
+            new DeviceData();
             MainPage = new AppShell();
         }
 

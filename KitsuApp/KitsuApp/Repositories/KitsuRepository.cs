@@ -392,6 +392,37 @@ namespace KitsuApp.Repositories
             }
         }
 
+        // Get Episodes from Anime ID
+        public static async Task<List<Episode>> GetEpisodesFromAnimeIDAsync(string animeId)
+        {
+            string url = $"{_BASEURL}/anime/{animeId}/episodes?page[limit]=10";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    JObject fullObject = JsonConvert.DeserializeObject<JObject>(json);
+                    JToken data = fullObject.SelectToken("data");
+                    List<Episode> episodes = data.ToObject<List<Episode>>();
+                    List<Episode> filteredEpisodes = new List<Episode>();
+                    foreach (Episode episode in episodes)
+                    {
+                        if (episode.EpisodeInfo.Image != null)
+                        {
+                            filteredEpisodes.Add(episode);
+                        }
+                    }
+                    return filteredEpisodes;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
+
         // Get your favorite Animes
         public static async Task<List<Anime>> GetFavoriteAnimesAsync()
         {
@@ -414,6 +445,25 @@ namespace KitsuApp.Repositories
         }
 
         // Get your favorite Mangas
+        public static async Task<List<Manga>> GetFavoriteMangasAsync()
+        {
+            string url = $"https://leijin.azurewebsites.net/api/favorites/manga";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = await client.GetStringAsync(url);
+                    List<Manga> mangas = JsonConvert.DeserializeObject<List<Manga>>(json);
+                    return mangas;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Post your favorite Anime
         public static async Task PostFavoriteAnimeAsync(Anime anime)
@@ -444,7 +494,28 @@ namespace KitsuApp.Repositories
         // Post your favorite Manga
         public static async Task PostFavoriteMangaAsync(Manga manga)
         {
-           
+            string url = $"https://leijin.azurewebsites.net/api/favorites/manga";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = JsonConvert.SerializeObject(manga);
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        string errorMsg = $"Unsuccessful Post to url: {url}, object: {json}";
+                        throw new Exception(errorMsg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+
         }
 
         // Put your favorite Anime
@@ -474,6 +545,30 @@ namespace KitsuApp.Repositories
         }
 
         // Put your favorite Manga
+        public static async Task PutFavoriteMangaAsync(Manga manga)
+        {
+            string url = $"https://leijin.azurewebsites.net/api/favorites/manga/{manga.Id}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    string json = JsonConvert.SerializeObject(manga);
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.PutAsync(url, content);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        string errorMsg = $"Unsuccessful Put to url: {url}, object: {json}";
+                        throw new Exception(errorMsg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Delete your favorite Anime
         public static async Task DeleteFavoriteAnimeAsync(string animeId)
@@ -500,6 +595,28 @@ namespace KitsuApp.Repositories
         }
 
         // Delete your favorite Manga
+        public static async Task DeleteFavoriteMangaAsync(string mangaId)
+        {
+            string url = $"https://leijin.azurewebsites.net/api/favorites/manga/{mangaId}";
+            Debug.WriteLine(url);
+            using (HttpClient client = GetHttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.DeleteAsync(url);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        string errorMsg = $"Unsuccessful Delete to url: {url}";
+                        throw new Exception(errorMsg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+            }
+        }
 
         // Get check if Anime or Manga is in favorites
         public static async Task<bool> GetCheckFavNotExists(string type, string id)
@@ -515,17 +632,17 @@ namespace KitsuApp.Repositories
                     }
                 }
             }
-            //else if (type == "manga")
-            //{
-            //    List<Manga> mangas = await GetFavoriteMangasAsync();
-            //    foreach (Manga manga in mangas)
-            //    {
-            //        if (manga.Id == id)
-            //        {
-            //            return true;
-            //        }
-            //    }
-            //}
+            else if (type == "manga")
+            {
+                List<Manga> mangas = await GetFavoriteMangasAsync();
+                foreach (Manga manga in mangas)
+                {
+                    if (manga.Id == id)
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
     }

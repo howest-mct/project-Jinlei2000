@@ -19,10 +19,16 @@ namespace KitsuApp.Views
         public MangaOverview()
         {
             InitializeComponent();
+            //SetGenres();
+            //ShowManga();
+        }
 
+        // OnAppearing
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             // ConnectivityTest Class
             new ConnectivityTest();
-
             SetGenres();
             ShowManga();
         }
@@ -116,19 +122,19 @@ namespace KitsuApp.Views
         {
             Debug.WriteLine("Button Add_To_Favorite");
             // Get the CommandParameter of the button
-            Manga anime = (Manga)((Button)sender).CommandParameter;
+            Manga manga = (Manga)((Button)sender).CommandParameter;
 
-            Debug.WriteLine("Manga: " + anime.Id);
+            Debug.WriteLine("Manga: " + manga.Id);
 
-            bool Check = await KitsuRepository.GetCheckFavNotExists("manga", anime.Id);
+            bool Check = await KitsuRepository.GetCheckFavNotExists("manga", manga.Id);
             if (Check == false)
             {
-                anime.FavName = "Favorite manga";
+                manga.FavName = "Favorite manga";
 
                 // Add to favorite
-                //await KitsuRepository.PostFavoriteMangaAsync(anime);
+                await KitsuRepository.PostFavoriteMangaAsync(manga);
 
-                if (anime != null)
+                if (manga != null)
                 {
                     await Navigation.PushAsync(new MangaOverviewFav());
                 }

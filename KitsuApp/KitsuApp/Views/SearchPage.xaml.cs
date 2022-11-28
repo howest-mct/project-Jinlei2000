@@ -1,5 +1,6 @@
 ﻿using KitsuApp.Models;
 using KitsuApp.Repositories;
+using KitsuApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,7 +32,7 @@ namespace KitsuApp.Views
             List<Anime> animes = await KitsuRepository.SearchAnimeAsync(keyword);
             List<Manga> mangas = await KitsuRepository.SearchMangaAsync(keyword);
 
-            // If no data found
+            // Check if there is no data
             if (animes.Count == 0 && mangas.Count == 0)
             {
                 sktNothing.IsVisible = true;
@@ -39,6 +40,10 @@ namespace KitsuApp.Views
             }
             else
             {
+                cvwAnime.IsVisible = animes.Count == 0 ? false : true;
+                cvwManga.IsVisible = mangas.Count == 0 ? false : true;
+                lblAnime.IsVisible = animes.Count == 0 ? false : true;
+                lblManga.IsVisible = mangas.Count == 0 ? false : true;
                 cvwAnime.ItemsSource = animes;
                 cvwManga.ItemsSource = mangas;
             }
@@ -48,6 +53,8 @@ namespace KitsuApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            // ConnectivityTest Class
+            new ConnectivityTest();
             sktNothing.IsVisible = true;
             sktData.IsVisible = false;
             cvwAnime.ItemsSource = null;

@@ -1,5 +1,6 @@
 ﻿using KitsuApp.Models;
 using KitsuApp.Repositories;
+using KitsuApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,14 +19,14 @@ namespace KitsuApp.Views
         public AnimeOverviewFav()
         {
             InitializeComponent();
-            ShowFavAnimes();
-
         }
 
         // Update the list of favorites when the page appears
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            // ConnectivityTest Class
+            new ConnectivityTest();
             ShowFavAnimes();
         }
 

@@ -18,25 +18,9 @@ namespace KitsuApp
         public MainPage()
         {
             InitializeComponent();
-            //Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
-            //CheckConnectivity();
+           
         }
 
-        //private void CheckConnectivity()
-        //{
-        //    if (Connectivity.NetworkAccess == NetworkAccess.None)
-        //    {
-        //        Navigation.PushAsync(new NoConnectionPage());
-        //    }
-        //}
-
-        //void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
-        //{
-        //    Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxConnectivity_ConnectivityChanged");
-        //    if (Connectivity.NetworkAccess == NetworkAccess.None)
-        //    {
-        //        Navigation.PushAsync(new NoConnectionPage());
-        //    }
-        //}
+      
     }
 }

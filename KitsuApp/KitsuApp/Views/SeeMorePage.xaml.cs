@@ -1,5 +1,6 @@
 ﻿using KitsuApp.Models;
 using KitsuApp.Repositories;
+using KitsuApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,6 +20,14 @@ namespace KitsuApp.Views
         {
             InitializeComponent();
             ShowMore(filter, type, title);
+        }
+
+        // OnAppearing
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            // ConnectivityTest Class
+            new ConnectivityTest();
         }
 
         private async Task ShowMore(string filter, string type, string title)
@@ -79,26 +88,26 @@ namespace KitsuApp.Views
             }
             else if (collection.CollectionType == "manga")
             {
-                //Manga manga = (Manga)collection;
+                Manga manga = (Manga)collection;
 
-                //bool Check = await KitsuRepository.GetCheckFavNotExists("manga", collection.Id);
-                //if (Check == false)
-                //{
-                //    manga.FavName = "Favorite manga";
+                bool Check = await KitsuRepository.GetCheckFavNotExists("manga", collection.Id);
+                if (Check == false)
+                {
+                    manga.FavName = "Favorite manga";
 
-                //    // Add to favorite
-                //    await KitsuRepository.PostFavoriteMangaAsync(manga);
+                    // Add to favorite
+                    await KitsuRepository.PostFavoriteMangaAsync(manga);
 
-                //    if (manga != null)
-                //    {
-                //        await Navigation.PushAsync(new AnimeOverviewFav());
-                //    }
+                    if (manga != null)
+                    {
+                        await Navigation.PushAsync(new MangaOverviewFav());
+                    }
 
-                //}
-                //else
-                //{
-                //    await DisplayAlert("Info", "This anime is already in your favorites", "OK");
-                //}
+                }
+                else
+                {
+                    await DisplayAlert("Info", "This manga is already in your favorites", "OK");
+                }
             }
 
         }

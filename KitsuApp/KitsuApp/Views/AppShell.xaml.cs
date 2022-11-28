@@ -23,6 +23,7 @@ namespace KitsuApp.Views
 
             //change the color of the unselected tab
             Shell.SetUnselectedColor(this, Color.FromHex("#C5CCFB"));
+
         }
     }
 }

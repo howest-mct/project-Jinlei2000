@@ -1,12 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KitsuApp.Views.MangaOverviewFav">
+             x:Class="KitsuApp.Views.MangaOverviewFav"
+             xmlns:local="clr-namespace:KitsuApp.Services">
+
+    <!--#region Styling Component-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonAddDelStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="WidthRequest" Value="32"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="FontFamily" Value="MaterialIconsTwoToneRegular"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="Margin" Value="-42,4,0,0"/>
+            </Style>
+            <Style x:Key="buttonAddEditStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="WidthRequest" Value="32"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="FontFamily" Value="MaterialIconsTwoToneRegular"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="Margin" Value="-38,0,0,4"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--#endregion-->
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Manga!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <!--#region Your Favorite Manga-->
+        <ScrollView Orientation="Vertical">
+            <StackLayout>
+                <Label Text="Favorite Manga" FontSize="16" FontFamily="InterSemiBold" TextColor="#0D0D0D" Margin="10,5"/>
+
+                <StackLayout x:Name="EmptyPage" Margin="20,50">
+                    <Label Text="Hmmm!" FontSize="24" FontFamily="InterBold" TextColor="#0D0D0D" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Text="You don't have any favorites animes" FontFamily="InterSemiBold" TextColor="#0D0D0D" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center" Margin="0,5,0,0"/>
+                    <Label Text="Please add some favorite animes here " FontFamily="InterMedium" TextColor="#5D5D5D" FontSize="16" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Image Source="{local:EmbeddedImage ResourceId=KitsuApp.Assets.nothing.jpg }"/>
+                </StackLayout>
+
+                <CollectionView SelectionMode="Single" x:Name="cvwYourFavorites" Margin="0,0,0,10"  SelectionChanged="GoToDetailPage">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid>
+                                <!--#region Change Selection color-->
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <!--#endregion-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="10"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding FavName}" WidthRequest="150" HorizontalTextAlignment="Center" VerticalOptions="End" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterSemiBold" TextColor="#0D0D0D"/>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Frame IsClippedToBounds="True" Padding="0" CornerRadius="16">
+                                        <Image Source="{Binding MangaInfo.PosterImage.Medium}" Aspect="AspectFill"/>
+                                    </Frame>
+                                    <Button Text="&#xe872;" Style="{StaticResource buttonAddDelStyle}" Clicked="DeleteManga" CommandParameter="{Binding}"/>
+                                    <Button Text="&#xe3c9;" Style="{StaticResource buttonAddEditStyle}" Clicked="UpdateManga" CommandParameter="{Binding}"/>
+                                </StackLayout>
+                                <Label Text="{Binding MangaInfo.Name}" WidthRequest="142" HorizontalTextAlignment="Center" Grid.Row="2" VerticalOptions="Start" HorizontalOptions="Center" FontSize="12" LineBreakMode="WordWrap" MaxLines="2" FontFamily="InterMedium" TextColor="#434343"/>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+        </ScrollView>
+        <!--#endregion-->
+
     </ContentPage.Content>
 </ContentPage>
