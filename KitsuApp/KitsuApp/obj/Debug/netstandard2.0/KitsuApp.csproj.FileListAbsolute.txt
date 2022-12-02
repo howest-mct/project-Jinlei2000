@@ -33,7 +33,6 @@ C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\D
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\AnimeOverview.xaml.g.cs
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\MangaOverview.xaml.g.cs
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\HomePage.xaml.g.cs
-C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\AppShell.xaml.g.cs
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\FavoritePage.xaml.g.cs
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\AnimeOverviewFav.xaml.g.cs
 C:\Users\jinle\Documents\Labo\Project\project-Jinlei2000\KitsuApp\KitsuApp\obj\Debug\netstandard2.0\Views\MangaOverviewFav.xaml.g.cs

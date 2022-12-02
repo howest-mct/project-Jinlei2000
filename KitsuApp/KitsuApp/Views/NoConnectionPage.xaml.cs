@@ -25,10 +25,9 @@ namespace KitsuApp.Views
         }
         void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
         {
-            Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxConnectivity_ConnectivityChanged");
             if (Connectivity.NetworkAccess != NetworkAccess.None)
             {
-                // go to HomePage and remove all pages from stack
+                // go to root page and remove all pages from stack
                 Navigation.PopToRootAsync();
             }
         }

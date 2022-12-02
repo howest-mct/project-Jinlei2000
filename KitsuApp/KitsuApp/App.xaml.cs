@@ -23,7 +23,7 @@ namespace KitsuApp
             InitializeComponent();
             // Debug Device Info
             new DeviceData();
-            MainPage = new AppShell();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
