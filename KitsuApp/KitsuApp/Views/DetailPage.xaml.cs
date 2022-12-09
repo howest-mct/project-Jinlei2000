@@ -37,7 +37,7 @@ namespace KitsuApp.Views
             // ConnectivityTest Class
             new ConnectivityTest();
         }
-        
+
         private async Task ShowDetail()
         {
             if (CollectionContent.CollectionType == "anime")
@@ -63,11 +63,12 @@ namespace KitsuApp.Views
                 lblPopularityRank.Text = anime.AnimeInfo.PopularityRankString;
                 lblMembers.Text = anime.AnimeInfo.MemberCountString;
                 lblAgeRating.Text = anime.AnimeInfo.AgeRatingString;
-                
-                // Trailer
+
+                // Trailer & Share
                 if (anime.AnimeInfo.TrailerLink == "N/A")
                 {
                     btnTrailer.IsVisible = false;
+                    btnShare.IsVisible = false;
                 }
                 TrailerLink = anime.AnimeInfo.TrailerLink;
 
@@ -85,8 +86,9 @@ namespace KitsuApp.Views
                 }
 
                 // Characters
-                List<Character> characters = await KitsuRepository.GetCharactersFromAnimeOrMangaIDAsync("anime",anime.Id);
-                if (characters.Count == 0) {
+                List<Character> characters = await KitsuRepository.GetCharactersFromAnimeOrMangaIDAsync("anime", anime.Id);
+                if (characters.Count == 0)
+                {
                     flexCharacters.IsVisible = false;
                     cvwCharacters.IsVisible = false;
                 }
@@ -118,7 +120,7 @@ namespace KitsuApp.Views
                 lblName.Text = manga.MangaInfo.Name;
                 lblRating.Text = manga.MangaInfo.RatingProcent.ToString();
                 imgPoster.Source = manga.MangaInfo.PosterImage.Medium;
-                
+
                 lblTotalTimeText.Text = "TOTAL CHAPTERS";
                 lblTotalTime.Text = manga.MangaInfo.TotalPages;
 
@@ -142,7 +144,7 @@ namespace KitsuApp.Views
 
                 // Trailer
                 btnTrailer.IsVisible = false;
-                
+
                 // Genres
                 List<Genre> genres = await KitsuRepository.GetGenresFromMangaIDAsync(manga.Id);
                 Debug.WriteLine("Genres: " + genres.Count);
@@ -198,7 +200,7 @@ namespace KitsuApp.Views
             // Set transfroms
             canvas.Translate(e.Info.Width / 2, e.Info.Height / 2);
             canvas.Scale(e.Info.Width / 200f);
-            
+
             // background color of the circle
             SKPaint skPaintGray = new SKPaint
             {
@@ -246,7 +248,24 @@ namespace KitsuApp.Views
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                // An unexpected error occured. No browser may be installed on the device.
+            }
+        }
+
+        // Open share link
+        private void BtnShareClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                // share link
+                Share.RequestAsync(new ShareTextRequest
+                {
+                    Text = TrailerLink,
+                    Title = "Share link"
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -256,7 +275,7 @@ namespace KitsuApp.Views
             Genre genre = (Genre)((Button)sender).BindingContext;
             if (genre != null)
             {
-                if(CollectionContent.CollectionType == "anime")
+                if (CollectionContent.CollectionType == "anime")
                 {
                     Navigation.PushAsync(new FilteredByGenrePage(genre, "anime"));
                 }
@@ -318,7 +337,7 @@ namespace KitsuApp.Views
                 }
             }
 
-           
+
         }
     }
 }

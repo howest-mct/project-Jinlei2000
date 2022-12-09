@@ -99,6 +99,9 @@
                 <Frame HasShadow="False" Margin="0,-10,0,50" Padding="20,0">
                     <StackLayout>
                         <Button x:Name="btnTrailer" Text="Watch Trailer" ImageSource="{local:EmbeddedImage ResourceId=KitsuApp.Assets.youtube.png}" Clicked="BtnTrailerClicked" />
+
+                        <Button x:Name="btnShare" Text="Share" ImageSource="{local:EmbeddedImage ResourceId=KitsuApp.Assets.test.png}" Clicked="BtnShareClicked" />
+                        
                         <Label Text="Synopsis" FontSize="14" FontFamily="InterSemiBold" TextColor="#434343"/>
                         <Label x:Name="lblSynopsis" FontSize="12" FontFamily="InterMedium" TextColor="#434343"/>
 

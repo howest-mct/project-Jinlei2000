@@ -68,7 +68,6 @@ namespace KitsuApp.Views
             Debug.WriteLine(manga.Id);
             if (manga != null)
             {
-                Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxxx");
                 await KitsuRepository.DeleteFavoriteMangaAsync(manga.Id);
                 await ShowFavMangas();
             }

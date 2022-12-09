@@ -26,7 +26,6 @@ namespace KitsuApp.Services
         // Handle connectivity changes
         void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
         {
-            Debug.WriteLine("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxConnectivity_ConnectivityChanged");
             if (Connectivity.NetworkAccess == NetworkAccess.None)
             {
                 // go to NoConnectionPage
