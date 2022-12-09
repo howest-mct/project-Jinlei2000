@@ -19,7 +19,6 @@
     <None Remove="Assets\searchImg.png" />
     <None Remove="Assets\share.png" />
     <None Remove="Assets\star.png" />
-    <None Remove="Assets\test.png" />
     <None Remove="Assets\youtube.png" />
     <None Remove="Fonts\InterBold.ttf" />
     <None Remove="Fonts\InterMedium.ttf" />
@@ -39,7 +38,6 @@
     <EmbeddedResource Include="Assets\home.png" />
     <EmbeddedResource Include="Assets\nothing.jpg" />
     <EmbeddedResource Include="Assets\searchImg.png" />
-    <EmbeddedResource Include="Assets\test.png" />
     <EmbeddedResource Include="Assets\share.png" />
     <EmbeddedResource Include="Assets\star.png" />
     <EmbeddedResource Include="Assets\youtube.png" />

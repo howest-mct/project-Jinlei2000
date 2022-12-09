@@ -172,8 +172,7 @@ namespace KitsuApp.Views
 
                 // Episodes
                 cvwEpisodes.IsVisible = false;
-                lblEpisodes.IsVisible = false;
-
+                flexEpisodes.IsVisible = false;
             }
         }
 
